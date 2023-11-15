@@ -2,7 +2,7 @@
 {
     public class Magic
     {
-        public int MinimumLevel { get; set; }
+        public int LevelRequired { get; set; }
         public int MagicPoints { get; set; }
         public MagicEffectType Type { get; set; }
         public MagicTarget Targets { get; set; }

@@ -1,8 +1,9 @@
 ﻿namespace tp3_prog
 {
 
-    public class Characters
+    public abstract class Characters
     {
-
+        public int Id { get; set; }
+        public string Name { get; set; }
     }
 }
