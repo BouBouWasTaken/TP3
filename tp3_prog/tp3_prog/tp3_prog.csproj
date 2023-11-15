@@ -7,4 +7,11 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="DELETEME\**" />
+    <EmbeddedResource Remove="DELETEME\**" />
+    <None Remove="DELETEME\**" />
+    <Page Remove="DELETEME\**" />
+  </ItemGroup>
+
 </Project>
