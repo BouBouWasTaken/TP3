@@ -2,10 +2,27 @@
 {
     public class Usable : Item
     {
-        public int Price { get; set; }
-        public string EffectType { get; set; }
-        public int Target { get; set; }
-        public int EffectValue { get; set; }
+        public MagicEffectType EffectType { get; set; } // Damage, Heal
+        public MagicTarget Target { get; set; } // User, RandomEnemy, AllEnemies
+
+        public int Value { get; set; }
+
+        public void Use()
+        {
+            if (CurrentOwner == null) return;
+
+            // Enlever la potion de son inventaire.
+            if (EffectType == MagicEffectType.Heal && Target == MagicTarget.User)
+            {
+                CurrentOwner.Health += Value;
+            }
+            else
+            {
+                // Attack(Target, Value);
+            }
+            // Call a function that redirects the effect
+        }
+
     }
 }
 
