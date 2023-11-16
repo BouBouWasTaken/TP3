@@ -1,4 +1,4 @@
-﻿namespace tp3_prog.Enums
+﻿namespace tp3_prog
 {
     public enum CombatResult
     {
