@@ -6,6 +6,4 @@ namespace tp3_prog
     {
         public List<Room> Rooms { get; set; } = new List<Room>();
     }
-
-
 }

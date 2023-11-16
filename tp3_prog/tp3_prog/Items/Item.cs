@@ -1,4 +1,4 @@
-﻿namespace tp3_prog
+namespace tp3_prog
 {
 
     public abstract class Item
