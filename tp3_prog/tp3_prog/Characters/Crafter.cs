@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using tp3_prog.Enums;
 
 namespace tp3_prog
 {
