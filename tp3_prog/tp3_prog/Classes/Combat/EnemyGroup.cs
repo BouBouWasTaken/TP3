@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace tp3_prog.Combat
+namespace tp3_prog
 {
     internal class EnemyGroup
     {
