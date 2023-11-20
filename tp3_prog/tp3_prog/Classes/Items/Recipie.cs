@@ -2,7 +2,7 @@
 
 namespace tp3_prog
 {
-    internal class Recipe
+    public class Recipe
     {
         public Recipe(List<Ingredient> ingredients)
         {
