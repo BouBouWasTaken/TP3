@@ -1,0 +1,41 @@
+﻿<UserControl x:Class="_3C4_TP2.UserControlPartyMember"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:_3C4_TP2"
+             mc:Ignorable="d" 
+             d:DesignHeight="64" d:DesignWidth="440">
+    <WrapPanel Background="White">
+        <Image x:Name="ImagePortrait" Height="64" Width="64" Margin="0 0 10 0" />
+
+        <WrapPanel>
+            <StackPanel>
+                <TextBox x:Name="TextBoxName" FontWeight="ExtraBold">Name</TextBox>
+
+                <WrapPanel Margin="0 10">
+                    <StackPanel Margin="0 0 10 0">
+                        <TextBlock x:Name="TextBlockLevel">Lv. 999</TextBlock>
+                        <TextBlock x:Name="TextBlockExperience">Xp : 50/100</TextBlock>
+                    </StackPanel>
+
+                    <StackPanel Margin="0 0 10 0">
+                        <TextBlock x:Name="TextBlockHP">HP : 999 / 999</TextBlock>
+                        <TextBlock x:Name="TextBlockMP">MP : 999 / 999</TextBlock>
+                    </StackPanel>
+
+                    <StackPanel Margin="0 0 10 0">
+                        <TextBlock x:Name="TextBlockAttack">ATK : 999</TextBlock>
+                        <TextBlock x:Name="TextBlockDefense">DEF : 999</TextBlock>
+                    </StackPanel>
+                </WrapPanel>
+            </StackPanel>
+
+            <ListView x:Name="ListViewEquipments" Width="150">
+                <ListViewItem>Weapon</ListViewItem>
+                <ListViewItem>Armor</ListViewItem>
+                <ListViewItem>Pants</ListViewItem>
+            </ListView>
+        </WrapPanel>
+    </WrapPanel>
+</UserControl>

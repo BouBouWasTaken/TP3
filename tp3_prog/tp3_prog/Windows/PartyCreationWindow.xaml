@@ -1,0 +1,24 @@
+﻿<Window x:Class="_3C4_TP2.PartyCreationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:_3C4_TP2"
+        mc:Ignorable="d"
+        Title="" 
+        ResizeMode="NoResize"
+        SizeToContent="WidthAndHeight"
+        WindowStyle="ToolWindow">
+    <StackPanel>
+
+        <TextBlock FontWeight="Bold" 
+                   Background="Black" Foreground="White" 
+                   TextAlignment="Center" Padding="10">Party creation</TextBlock>
+
+        <StackPanel x:Name="PanelPartyCreations" />
+
+        <Button x:Name="ButtonStart" 
+                Padding="20 5" 
+                IsEnabled="False">Start new game</Button>
+    </StackPanel>
+</Window>
