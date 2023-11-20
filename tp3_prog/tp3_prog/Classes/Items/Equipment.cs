@@ -14,6 +14,7 @@ namespace tp3_prog
         {
             // Check if he already has an equiped
 
+
             // If YES, put the current equiped in the inventory
             // put the new on in the slot
 

@@ -18,9 +18,9 @@
             }
             else
             {
+                // Call a function that redirects the effect
                 // Attack(Target, Value);
             }
-            // Call a function that redirects the effect
         }
 
     }
