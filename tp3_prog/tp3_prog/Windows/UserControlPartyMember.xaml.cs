@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace _3C4_TP2
+namespace tp3_prog
 {
     /// <summary>
     /// Interaction logic for UserControlPartyMember.xaml

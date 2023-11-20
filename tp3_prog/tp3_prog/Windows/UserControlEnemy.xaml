@@ -1,9 +1,9 @@
-﻿<UserControl x:Class="_3C4_TP2.UserControlEnemy"
+﻿<UserControl x:Class="tp3_prog.UserControlEnemy"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:_3C4_TP2"
+             xmlns:local="clr-namespace:tp3_prog"
              mc:Ignorable="d" 
              d:DesignHeight="64" d:DesignWidth="192">
     <WrapPanel Background="White">

@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace _3C4_TP2
+namespace tp3_prog
 {
     public partial class PartyWindow : Window
     {

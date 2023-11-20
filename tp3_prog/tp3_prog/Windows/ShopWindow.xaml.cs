@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace _3C4_TP2
+namespace tp3_prog
 {
     /// <summary>
     /// Window utilisé pour tous les types de Merchant/Crafter
