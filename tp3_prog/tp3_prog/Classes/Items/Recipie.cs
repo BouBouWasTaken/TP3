@@ -2,9 +2,9 @@
 
 namespace tp3_prog
 {
-    internal class Recipe
+    public class Recipie
     {
-        public Recipe(List<Ingredient> ingredients)
+        public Recipie(List<Ingredient> ingredients)
         {
             this.Ingredients = ingredients;
         }
