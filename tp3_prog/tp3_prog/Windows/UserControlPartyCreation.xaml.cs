@@ -7,6 +7,8 @@ namespace tp3_prog
         public UserControlPartyCreation()
         {
             InitializeComponent();
+
+
         }
     }
 }
