@@ -2,13 +2,16 @@
 {
     public enum EquipmentSlot
     {
+        All,
         Weapon,
         Helmet,
         Armor,
         Legs,
         Boots,
         Shield,
-        Gloves
+        Gloves,
+        Sword,
+
     }
 
 }

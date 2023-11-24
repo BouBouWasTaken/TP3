@@ -1,12 +1,13 @@
 namespace tp3_prog
 {
 
-    public abstract class Item
+    public class Item
     {
         public int Id { get; set; } // 3201832
         public string? Name { get; set; } // X's sword
         public int Price { get; set; } // 5 Golds
         public Hero? CurrentOwner { get; set; } // Who owns it
+        public int Amount { get; set; }
 
         // Now it's easier to access the guy's inventory. ^^^
 
@@ -44,7 +45,10 @@ namespace tp3_prog
             }
         }
 
-
+        public override string ToString()
+        {
+            return $"{Name} ({Amount})";
+        }
 
     }
 

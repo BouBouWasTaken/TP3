@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
   <Class Name="tp3_prog.Characters">
-    <Position X="14.75" Y="6.75" Width="2" />
+    <Position X="18.75" Y="10.75" Width="2" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Classes\Characters\Characters.cs</FileName>
@@ -18,7 +18,7 @@
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="tp3_prog.Crafter">
-    <Position X="12" Y="8.75" Width="3.25" />
+    <Position X="18" Y="14" Width="3.25" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAhAAAAA=</HashCode>
       <FileName>Classes\Characters\Crafter.cs</FileName>
@@ -29,14 +29,14 @@
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="tp3_prog.Enemy">
-    <Position X="16" Y="9.5" Width="1.5" />
+    <Position X="22.5" Y="14.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Classes\Characters\Enemy.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="tp3_prog.Hero">
-    <Position X="16.25" Y="0.5" Width="2.25" />
+    <Position X="19" Y="0.5" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAACAAAAAAAAAAAAAIAAAAAAIAACAABAAAAAgAAQAE=</HashCode>
       <FileName>Classes\Characters\Hero.cs</FileName>
@@ -49,21 +49,21 @@
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="tp3_prog.Merchant">
-    <Position X="7.5" Y="8.75" Width="1.5" />
+    <Position X="21.5" Y="11.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Classes\Characters\Merchant.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="tp3_prog.Npc">
-    <Position X="9.75" Y="8.75" Width="1.5" />
+    <Position X="21.25" Y="10.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Classes\Characters\Npc.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="tp3_prog.EnemyGroup">
-    <Position X="16.5" Y="12.5" Width="2.75" />
+    <Position X="25.75" Y="14.25" Width="2.75" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Classes\Combat\EnemyGroup.cs</FileName>
@@ -73,14 +73,14 @@
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="tp3_prog.Fight">
-    <Position X="7" Y="10.75" Width="2.75" />
+    <Position X="4.75" Y="10.25" Width="2.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAACAAQAAAAAAAEAAAAAAQAAAAAAAAg=</HashCode>
       <FileName>Classes\Combat\Fight.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="tp3_prog.Party">
-    <Position X="19.5" Y="1.75" Width="2.75" />
+    <Position X="24" Y="0.75" Width="2.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
       <FileName>Classes\Combat\Party.cs</FileName>
@@ -90,14 +90,14 @@
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="tp3_prog.Round">
-    <Position X="7" Y="13.75" Width="3" />
+    <Position X="5" Y="15" Width="3" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Classes\Combat\Round.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="tp3_prog.Equipment">
-    <Position X="11.25" Y="3.75" Width="3" />
+    <Position X="8.5" Y="9.75" Width="3" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAgAAAgAAAAAgA=</HashCode>
       <FileName>Classes\Items\Equipment.cs</FileName>
@@ -107,14 +107,14 @@
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="tp3_prog.Ingredient">
-    <Position X="12.25" Y="14.25" Width="1.5" />
+    <Position X="9.75" Y="14" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Classes\Items\Ingredient.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="tp3_prog.Item">
-    <Position X="12.5" Y="0.75" Width="2.5" />
+    <Position X="12" Y="11" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAICAAAAAQAAAAAAQAAAAAQAAAAAAAAAAACAAAAAAAA=</HashCode>
       <FileName>Classes\Items\Item.cs</FileName>
@@ -124,7 +124,7 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="tp3_prog.Recipie">
-    <Position X="11.25" Y="12" Width="4.25" />
+    <Position X="11" Y="16" Width="4.25" />
     <TypeIdentifier>
       <HashCode>AAEAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAABAAE=</HashCode>
       <FileName>Classes\Items\Recipie.cs</FileName>
@@ -134,14 +134,14 @@
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="tp3_prog.Usable">
-    <Position X="7.25" Y="3" Width="3" />
+    <Position X="15" Y="11" Width="3" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAACCAAAAEAAAAAAAgAAAAAAA=</HashCode>
       <FileName>Classes\Items\Usable.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="tp3_prog.Auberge">
-    <Position X="21.25" Y="6.25" Width="1.5" />
+    <Position X="20.75" Y="8.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Classes\Map\Auberge.cs</FileName>
@@ -151,21 +151,21 @@
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="tp3_prog.RestingArea">
-    <Position X="19.75" Y="7.75" Width="2.5" />
+    <Position X="23.5" Y="6.5" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAQAAAA=</HashCode>
       <FileName>Classes\Map\RestingArea.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="tp3_prog.Room">
-    <Position X="25.5" Y="6.25" Width="2" />
+    <Position X="24" Y="8.25" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAQAAABAAAAAIAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Classes\Map\Room.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="tp3_prog.Sign">
-    <Position X="15.75" Y="4" Width="3" />
+    <Position X="20.75" Y="4" Width="3" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAIAAAAAAAAgA=</HashCode>
       <FileName>Classes\Map\Sign.cs</FileName>
@@ -177,7 +177,7 @@
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="tp3_prog.Zone">
-    <Position X="21" Y="3.5" Width="2.75" />
+    <Position X="26" Y="3.5" Width="2.75" />
     <TypeIdentifier>
       <HashCode>AAAEAAAAAAAAAAAAAAAAAAQAAAQAAAAAAAAAAAQAAAA=</HashCode>
       <FileName>Classes\Map\Zone.cs</FileName>
@@ -187,7 +187,7 @@
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="tp3_prog.Interaction">
-    <Position X="23.25" Y="0.75" Width="3.25" />
+    <Position X="24" Y="10.5" Width="3.25" />
     <TypeIdentifier>
       <HashCode>AAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAA=</HashCode>
       <FileName>Classes\Interaction.cs</FileName>
@@ -201,49 +201,49 @@
     </TypeIdentifier>
   </Class>
   <Enum Name="tp3_prog.CombatResult">
-    <Position X="28.75" Y="2" Width="1.5" />
+    <Position X="30" Y="2.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AACAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAA=</HashCode>
       <FileName>Enums\CombatResult.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Enum Name="tp3_prog.DialogOptions">
-    <Position X="29.25" Y="5.75" Width="1.5" />
+    <Position X="30" Y="7.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAACAAAAAAEAAAAAAAAA=</HashCode>
       <FileName>Enums\DialogOptions.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Enum Name="tp3_prog.EquipmentSlot">
-    <Position X="26.75" Y="4" Width="1.5" />
+    <Position X="30" Y="9" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAEAAAAAAAABAAAAAQAAAAgAUAAAAAAAAAI=</HashCode>
       <FileName>Enums\EquipmentSlot.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Enum Name="tp3_prog.MagicEffectType">
-    <Position X="28.75" Y="3.75" Width="1.5" />
+    <Position X="30" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAACAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Enums\MagicEffectType.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Enum Name="tp3_prog.MagicTarget">
-    <Position X="27" Y="2.25" Width="1.5" />
+    <Position X="30" Y="1" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AEABAgAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAQAAA=</HashCode>
       <FileName>Enums\MagicTarget.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Enum Name="tp3_prog.TypeClasse">
-    <Position X="30.75" Y="3" Width="1.5" />
+    <Position X="30" Y="5.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>ACAAAAAAAAAAAAAAADAAAAAAAAAAAAAUAAIAAAIAAAA=</HashCode>
       <FileName>Enums\TypeClasse.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Enum Name="tp3_prog.TypeCombat">
-    <Position X="24.75" Y="3.75" Width="1.5" />
+    <Position X="30" Y="11.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAgAAABAAAAAAAAAAAAAA=</HashCode>
       <FileName>Enums\TypeCombat.cs</FileName>
