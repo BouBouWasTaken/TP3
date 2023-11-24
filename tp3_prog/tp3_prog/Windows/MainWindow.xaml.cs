@@ -25,7 +25,29 @@ namespace tp3_prog
             newGameWindow.Show();
             */
 
-            Window newGameWindow = new InventoryWindow();
+            // Inventory Window now takes a merchant
+            Hero Bob = new()
+            {
+                Name = "Bob"
+            };
+
+            Item Gold = new()
+            {
+                Name = "Gold",
+                CurrentOwner = Bob,
+                Amount = 50,
+            };
+
+            Equipment Sword = new()
+            {
+                Name = "Sword of Kaine",
+                CurrentOwner = Bob,
+                Amount = 1,
+                Slot = EquipmentSlot.Sword,
+            };
+            Bob.Inventory.Add(Gold);
+            Bob.Inventory.Add(Sword);
+            Window newGameWindow = new InventoryWindow(Bob);
             newGameWindow.Show();
 
         }
