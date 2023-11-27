@@ -4,6 +4,7 @@ namespace tp3_prog
 {
     public partial class PartyCreationWindow : Window
     {
+
         public PartyCreationWindow()
         {
             InitializeComponent();
