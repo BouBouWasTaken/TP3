@@ -20,10 +20,10 @@ namespace tp3_prog
 
         private void ButtonNew_Click(object sender, RoutedEventArgs e)
         {
-            /* 
+
             Window newGameWindow = new PartyCreationWindow();
             newGameWindow.Show();
-            */
+
 
             // Inventory Window now takes a merchant
             Hero Bob = new()
@@ -47,8 +47,7 @@ namespace tp3_prog
             };
             Bob.Inventory.Add(Gold);
             Bob.Inventory.Add(Sword);
-            Window newGameWindow = new InventoryWindow(Bob);
-            newGameWindow.Show();
+
 
         }
 

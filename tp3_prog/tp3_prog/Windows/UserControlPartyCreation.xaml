@@ -17,13 +17,13 @@
             <WrapPanel Margin="0 10">
 
                 <StackPanel Margin="0 0 10 0">
-                    <TextBlock x:Name="TextBlockHP">HP : 999</TextBlock>
-                    <TextBlock x:Name="TextBlockMP">MP : 999</TextBlock>
+                    <TextBlock x:Name="TextBlockHP">HP : </TextBlock>
+                    <TextBlock x:Name="TextBlockMP">MP : </TextBlock>
                 </StackPanel>
 
                 <StackPanel Margin="0 0 10 0">
-                    <TextBlock x:Name="TextBlockAttack">ATK : 999</TextBlock>
-                    <TextBlock x:Name="TextBlockDefense">DEF : 999</TextBlock>
+                    <TextBlock x:Name="TextBlockAttack">ATK : </TextBlock>
+                    <TextBlock x:Name="TextBlockDefense">DEF : </TextBlock>
                 </StackPanel>
             </WrapPanel>
         </StackPanel>

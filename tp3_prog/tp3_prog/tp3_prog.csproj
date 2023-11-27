@@ -14,4 +14,8 @@
     <Page Remove="DELETEME\**" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Classes\Characters\deleteme\" />
+  </ItemGroup>
+
 </Project>

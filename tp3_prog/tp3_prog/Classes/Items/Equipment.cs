@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using tp3_prog.Classes.Characters;
 
 namespace tp3_prog
 {
