@@ -2,7 +2,7 @@
 
 namespace tp3_prog
 {
-    internal class Fight
+    public class Fight
     {
         // When a fight breaks out, this is called and generates it.
 

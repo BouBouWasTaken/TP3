@@ -1,6 +1,6 @@
 ﻿namespace tp3_prog
 {
-    internal class Round : Fight
+    public class Round : Fight
     {
 
         public Round(Party heroes, EnemyGroup enemies) : base(heroes, type)

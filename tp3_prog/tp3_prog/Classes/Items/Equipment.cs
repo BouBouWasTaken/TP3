@@ -21,6 +21,11 @@ namespace tp3_prog
 
             // If NO, put the new on in the slot
         }
+
+        public void AddClass(Classe classe)
+        {
+            Required_Class.Add(classe);
+        }
     }
 }
 

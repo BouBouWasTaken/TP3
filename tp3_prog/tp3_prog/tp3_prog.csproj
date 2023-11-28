@@ -8,14 +8,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Classes\Characters\deleteme\**" />
     <Compile Remove="DELETEME\**" />
+    <EmbeddedResource Remove="Classes\Characters\deleteme\**" />
     <EmbeddedResource Remove="DELETEME\**" />
+    <None Remove="Classes\Characters\deleteme\**" />
     <None Remove="DELETEME\**" />
+    <Page Remove="Classes\Characters\deleteme\**" />
     <Page Remove="DELETEME\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Classes\Characters\deleteme\" />
   </ItemGroup>
 
 </Project>

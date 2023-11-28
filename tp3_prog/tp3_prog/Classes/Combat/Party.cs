@@ -2,14 +2,16 @@
 
 namespace tp3_prog
 {
-    internal class Party
+    public class Party
     {
         public Party(List<Hero> heroes)
         {
-            Hero_Party = heroes;
+            Members = heroes;
         }
 
-        public List<Hero> Hero_Party { get; set; }
+        public List<Hero> Members { get; set; }
+        public List<Item> Inventory = new List<Item>();
+        public int Gold { get; set; }
 
         // Any function that concernes a party, much like targetting the entire party.
 

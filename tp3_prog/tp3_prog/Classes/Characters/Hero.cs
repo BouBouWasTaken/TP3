@@ -12,8 +12,13 @@ namespace tp3_prog
         public int MagicPoints { get; set; }
         public int Attack { get; set; }
         public int Defense { get; set; }
-        public List<Item> Inventory { get; set; } = new List<Item>();
-        public int Gold { get; set; }
+        public List<Equipment>? Equipment { get; set; }
 
+        public override string ToString()
+        {
+            return Name;
+        }
     }
+
+
 }

@@ -2,7 +2,7 @@
 
 namespace tp3_prog
 {
-    internal class EnemyGroup
+    public class EnemyGroup
     {
         public EnemyGroup(List<Enemy> enemies)
         {
