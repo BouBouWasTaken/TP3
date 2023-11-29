@@ -24,31 +24,6 @@ namespace tp3_prog
             Window newGameWindow = new PartyCreationWindow();
             newGameWindow.Show();
 
-
-            // Inventory Window now takes a merchant
-            Hero Bob = new()
-            {
-                Name = "Bob"
-            };
-
-            Item Gold = new()
-            {
-                Name = "Gold",
-                CurrentOwner = Bob,
-                Amount = 50,
-            };
-
-            Equipment Sword = new()
-            {
-                Name = "Sword of Kaine",
-                CurrentOwner = Bob,
-                Amount = 1,
-                Slot = EquipmentSlot.Sword,
-            };
-            Bob.Inventory.Add(Gold);
-            Bob.Inventory.Add(Sword);
-
-
         }
 
         private void ButtonSave_Click(object sender, RoutedEventArgs e)
