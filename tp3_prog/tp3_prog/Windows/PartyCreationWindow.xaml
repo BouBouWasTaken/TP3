@@ -19,6 +19,6 @@
 
         <Button x:Name="ButtonStart" 
                 Padding="20 5" 
-                IsEnabled="False">Start new game</Button>
+                >Start new game</Button>
     </StackPanel>
 </Window>

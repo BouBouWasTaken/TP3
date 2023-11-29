@@ -1,5 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using tp3_prog.Classes.Characters;
 
 namespace tp3_prog
@@ -9,7 +12,10 @@ namespace tp3_prog
     /// </summary>
     public partial class App : Application
     {
-
+        public static ImageSource GetImage(string imageUrl)
+        {
+            return new BitmapImage(new Uri("pack://application:,,,/tp3_prog;component/assets/" + imageUrl));
+        }
 
 
     }
@@ -26,7 +32,8 @@ namespace tp3_prog
                     HpByLevel = 10,
                     MpByLevel = 3,
                     AtkByLevel = 2,
-                    DefByLevel = 3
+                    DefByLevel = 3,
+                    Portrait = "fighter.png"
                 }
              },
              {
@@ -37,7 +44,8 @@ namespace tp3_prog
                     HpByLevel = 8,
                     MpByLevel = 3,
                     AtkByLevel = 3,
-                    DefByLevel = 2
+                    DefByLevel = 2,
+                    Portrait = "thief.png"
                 }
              },
              {
@@ -48,7 +56,8 @@ namespace tp3_prog
                     HpByLevel = 8,
                     MpByLevel = 4,
                     AtkByLevel = 2,
-                    DefByLevel = 2
+                    DefByLevel = 2,
+                    Portrait = "cleric.png"
                 }
             },
             {
@@ -59,7 +68,8 @@ namespace tp3_prog
                     HpByLevel = 6,
                     MpByLevel = 6,
                     AtkByLevel = 2,
-                    DefByLevel = 2
+                    DefByLevel = 2,
+                    Portrait = "mage.png"
                 }
             },
         };

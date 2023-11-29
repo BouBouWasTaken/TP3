@@ -18,4 +18,18 @@
     <Page Remove="DELETEME\**" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Assets\cleric.png" />
+    <None Remove="Assets\fighter.png" />
+    <None Remove="Assets\mage.png" />
+    <None Remove="Assets\thief.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\cleric.png" />
+    <Resource Include="Assets\fighter.png" />
+    <Resource Include="Assets\mage.png" />
+    <Resource Include="Assets\thief.png" />
+  </ItemGroup>
+
 </Project>
