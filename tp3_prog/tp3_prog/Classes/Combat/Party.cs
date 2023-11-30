@@ -21,21 +21,18 @@ namespace tp3_prog
         // Missing zone
         private void BaseItems()
         {
-            //Gold += 200;
-            for (int i = 0; i < 5; i++)
-            {
+            Gold += 200;
 
-                ItemInventory b = new ItemInventory(DefaultData.Usables["Health potion"], 5);
-                ItemInventory c = new ItemInventory(DefaultData.Usables["Mana potion"], 5);
-                Inventory.Add(b);
-                Inventory.Add(c);
-            }
-            /*for (int i = 0; i < 3; i++)
-            {
-                Inventory.Add(DefaultData.Usables["Shuriken"]);
-            }
-            Inventory.Add(DefaultData.Usables["Bomb"]);
-            */
+            ItemInventory HealthPotions = new ItemInventory(DefaultData.Usables["Health potion"], 5);
+            ItemInventory ManaPotions = new ItemInventory(DefaultData.Usables["Mana potion"], 5);
+            ItemInventory Shuriken = new ItemInventory(DefaultData.Usables["Shuriken"], 3);
+            ItemInventory Bomb = new ItemInventory(DefaultData.Usables["Bomb"], 1);
+
+            Inventory.Add(HealthPotions);
+            Inventory.Add(ManaPotions);
+            Inventory.Add(Shuriken);
+            Inventory.Add(Bomb);
+
         }
 
     }

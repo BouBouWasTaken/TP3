@@ -16,13 +16,9 @@ namespace tp3_prog
             return new BitmapImage(new Uri("pack://application:,,,/tp3_prog;component/assets/" + imageUrl));
         }
 
-        /* 
-           Create a list of components with "Sapphire" and "Steel ore"
-           = Components.Values.Where(component => component.Name == "Sapphire" || component.Name == "Steel ore").ToList();
-        */
     }
 
-    static class DefaultData
+    public static class DefaultData
     {
         public static Dictionary<string, Classe> Classes = new Dictionary<string, Classe>()
         {
@@ -63,41 +59,42 @@ namespace tp3_prog
             {"Sapphire",    new Component(){Name = "Sapphire",      Value =  10 } },
             {"Steel ore",   new Component(){Name = "Steel ore",     Value = 10 } },
             {"Iron ingot",  new Component(){Name = "Iron ingot",    Value = 25 } },
-            {"Steel ingot", new Component(){Name = "Steel ingot",   Value = 100 } }
+            {"Steel ingot", new Component(){Name = "Steel ingot",   Value = 100 } },
+            {"Amethyst",    new Component(){Name = "Amethyst",      Value = 150 } }
 
         };
 
         public static Dictionary<string, Equipment> Equipments = new Dictionary<string, Equipment>()
-        {                                                                   //fighter = 0,  thief = 1, cleric = 2,mage = 3
-            {"Bronze sword",          new Equipment(){Name = "Bronze sword",          Value = 50,    Type = EquipmentSlot.Weapon, Atk = 1, Def = 1, Required_Class =  {"Fighter", "Thief" } }},
-            {"Iron sword",            new Equipment(){Name = "Iron sword",            Value = 100,   Type = EquipmentSlot.Weapon, Atk = 2, Def = 1, Required_Class =  {"Fighter", "Thief" } }},
-            {"Excalibur",             new Equipment(){Name = "Excalibur",             Value = 10000, Type = EquipmentSlot.Weapon, Atk = 10, Def = 5,Required_Class =  { "Fighter" } }},
-            {"Pine staff",            new Equipment(){Name = "Pine staff",            Value = 50,    Type = EquipmentSlot.Weapon, Atk = 1, Mp = 3,  Required_Class =  { "Cleric", "Mage"} }},
-            {"Oak staff",             new Equipment(){Name = "Oak staff",             Value = 100,   Type = EquipmentSlot.Weapon, Atk = 2, Mp = 4,  Required_Class =  { "Cleric", "Mage"} }},
-            {"Mahogany staff",        new Equipment(){Name = "Mahogany staff",        Value = 200,   Type = EquipmentSlot.Weapon, Atk = 3, Mp = 5,  Required_Class =  { "Cleric", "Mage" } }},
-            {"Bronze knife",          new Equipment(){Name = "Bronze knife",          Value = 25,    Type = EquipmentSlot.Weapon, Atk = 1,          Required_Class =  { "Fighter", "Thief" } }},
-            {"Iron knife",            new Equipment(){Name = "Iron knife",            Value = 75,    Type = EquipmentSlot.Weapon, Atk = 2,          Required_Class =  { "Fighter", "Thief", "Cleric", "Mage" } }},
-            {"Bronze mace",           new Equipment(){Name = "Bronze mace",           Value = 35,    Type = EquipmentSlot.Weapon, Atk = 1, Def = 1, Required_Class =  { "Fighter", "Cleric" } }},
-            {"Iron mace",             new Equipment(){Name = "Iron mace",             Value = 80,    Type = EquipmentSlot.Weapon, Atk = 2, Def = 1, Required_Class =  { "Fighter", "Cleric" } }},
-            {"Bronze chestpiece",     new Equipment(){Name = "Bronze chestpiece",     Value = 100,   Type = EquipmentSlot.Armor,                    Required_Class =  { "Fighter" } }},
-            {"Iron chestpiece",       new Equipment(){Name = "Iron chestpiece",       Value = 200,   Type = EquipmentSlot.Armor,                    Required_Class =  { "Fighter" } }},
-            {"Leather armor",         new Equipment(){Name = "Leather armor",         Value = 50,    Type = EquipmentSlot.Armor, Atk = 1, Def = 1,  Required_Class =  { "Thief", "Cleric" } }},
-            {"Studded leather armor", new Equipment(){Name = "Studded leather armor", Value = 100,   Type = EquipmentSlot.Armor,                    Required_Class =  { "Thief", "Cleric" } }},
-            {"Tattered robes",        new Equipment(){Name = "Tattered robes",        Value = 25,    Type = EquipmentSlot.Armor,Def=0,Mp=3,         Required_Class =  { "Cleric", "Mage"} }},
-            {"Mage robes",            new Equipment(){Name = "Mage robes",            Value = 250,   Type = EquipmentSlot.Armor,Def=1,Mp=4,         Required_Class =  { "Cleric", "Mage"} }},
-            {"Enchanted robes",       new Equipment(){Name = "Enchanted robes",       Value = 1000,  Type = EquipmentSlot.Armor,Def=2,Mp=8,         Required_Class =  { "Cleric", "Mage" } }},
-            {"Basic pants",           new Equipment(){Name = "Basic pants",           Value = 25,    Type = EquipmentSlot.Pants,Def=1,Hp=3,         Required_Class =  { "Fighter", "Thief", "Cleric", "Mage" } }},
-            {"Well-woven pants",      new Equipment(){Name = "Well-woven pants",      Value = 100,   Type = EquipmentSlot.Pants,Def=1,Hp=5,         Required_Class =  { "Fighter", "Thief", "Cleric", "Mage" } }},
+        {
+            {"Bronze sword",          new Equipment(){Name = "Bronze sword",          Value = 50,    Type = EquipmentSlot.Weapon, Atk = 1, Def = 1, Required_Class =  { DefaultData.Classes["Fighter"], DefaultData.Classes["Thief"] } }},
+            {"Iron sword",            new Equipment(){Name = "Iron sword",            Value = 100,   Type = EquipmentSlot.Weapon, Atk = 2, Def = 1, Required_Class =  {DefaultData.Classes["Fighter"], DefaultData.Classes["Thief"] } }},
+            {"Excalibur",             new Equipment(){Name = "Excalibur",             Value = 10000, Type = EquipmentSlot.Weapon, Atk = 10, Def = 5,Required_Class =  { DefaultData.Classes["Fighter"] } }},
+            {"Pine staff",            new Equipment(){Name = "Pine staff",            Value = 50,    Type = EquipmentSlot.Weapon, Atk = 1, Mp = 3,  Required_Class =  { DefaultData.Classes["Cleric"], DefaultData.Classes["Mage"] } }},
+            {"Oak staff",             new Equipment(){Name = "Oak staff",             Value = 100,   Type = EquipmentSlot.Weapon, Atk = 2, Mp = 4,  Required_Class =  { DefaultData.Classes["Cleric"], DefaultData.Classes["Mage"] } }},
+            {"Mahogany staff",        new Equipment(){Name = "Mahogany staff",        Value = 200,   Type = EquipmentSlot.Weapon, Atk = 3, Mp = 5,  Required_Class =  { DefaultData.Classes["Cleric"], DefaultData.Classes["Mage"] } }},
+            {"Bronze knife",          new Equipment(){Name = "Bronze knife",          Value = 25,    Type = EquipmentSlot.Weapon, Atk = 1,          Required_Class =  { DefaultData.Classes["Fighter"], DefaultData.Classes["Thief"] } }},
+            {"Iron knife",            new Equipment(){Name = "Iron knife",            Value = 75,    Type = EquipmentSlot.Weapon, Atk = 2,          Required_Class =  { DefaultData.Classes["Fighter"], DefaultData.Classes["Thief"], DefaultData.Classes["Cleric"], DefaultData.Classes["Mage"] } }},
+            {"Bronze mace",           new Equipment(){Name = "Bronze mace",           Value = 35,    Type = EquipmentSlot.Weapon, Atk = 1, Def = 1, Required_Class =  { DefaultData.Classes["Fighter"], DefaultData.Classes["Cleric"] } }},
+            {"Iron mace",             new Equipment(){Name = "Iron mace",             Value = 80,    Type = EquipmentSlot.Weapon, Atk = 2, Def = 1, Required_Class =  { DefaultData.Classes["Fighter"], DefaultData.Classes["Cleric"] } }},
+            {"Bronze chestpiece",     new Equipment(){Name = "Bronze chestpiece",     Value = 100,   Type = EquipmentSlot.Armor,                    Required_Class =  { DefaultData.Classes["Fighter"] } }},
+            {"Iron chestpiece",       new Equipment(){Name = "Iron chestpiece",       Value = 200,   Type = EquipmentSlot.Armor,                    Required_Class =  { DefaultData.Classes["Fighter"] } }},
+            {"Leather armor",         new Equipment(){Name = "Leather armor",         Value = 50,    Type = EquipmentSlot.Armor, Atk = 1, Def = 1,  Required_Class =  { DefaultData.Classes["Thief"], DefaultData.Classes["Cleric"] } }},
+            {"Studded leather armor", new Equipment(){Name = "Studded leather armor", Value = 100,   Type = EquipmentSlot.Armor,                    Required_Class =  { DefaultData.Classes["Thief"], DefaultData.Classes["Cleric"] } }},
+            {"Tattered robes",        new Equipment(){Name = "Tattered robes",        Value = 25,    Type = EquipmentSlot.Armor,Def=0,Mp=3,         Required_Class =  { DefaultData.Classes["Cleric"], DefaultData.Classes["Mage"] } }},
+            {"Mage robes",            new Equipment(){Name = "Mage robes",            Value = 250,   Type = EquipmentSlot.Armor,Def=1,Mp=4,         Required_Class =  { DefaultData.Classes["Cleric"], DefaultData.Classes["Mage"] } }},
+            {"Enchanted robes",       new Equipment(){Name = "Enchanted robes",       Value = 1000,  Type = EquipmentSlot.Armor,Def=2,Mp=8,         Required_Class =  { DefaultData.Classes["Cleric"], DefaultData.Classes["Mage"] } }},
+            {"Basic pants",           new Equipment(){Name = "Basic pants",           Value = 25,    Type = EquipmentSlot.Pants,Def=1,Hp=3,         Required_Class =  { DefaultData.Classes["Fighter"], DefaultData.Classes["Thief"] } }},
+            {"Well-woven pants",      new Equipment(){Name = "Well-woven pants",      Value = 100,   Type = EquipmentSlot.Pants,Def=1,Hp=5,         Required_Class =  { DefaultData.Classes["Fighter"], DefaultData.Classes["Thief"] } }},
         };
         public static Dictionary<string, Enemy> Enemies = new Dictionary<string, Enemy>()
         {
-            {"Goblin",      new Enemy(){Name = "Goblin"  , Level = 1, Hp = 5 , Atk = 4 , Def = 0, Gold = 3 , Exp = 5 , Drop_Chance = 0.5,  Drop_Items = { "Herb", "Cloth" } } },
-            {"Wolf",        new Enemy(){Name = "Wolf"    , Level = 1, Hp = 6 , Atk = 5 , Def = 0, Gold = 2 , Exp = 6 , Drop_Chance = 0.75, Drop_Items = { "Herb", "Hide" } } },
-            {"Skeleton",    new Enemy(){Name = "Skeleton", Level = 2, Hp = 8 , Atk = 4 , Def = 2, Gold = 1 , Exp = 8 , Drop_Chance = 3,    Drop_Items = { "Herb", "Bone" } } },
-            {"Bandit",      new Enemy(){Name = "Bandit"  , Level = 2, Hp = 10, Atk = 6 , Def = 1, Gold = 8 , Exp = 10, Drop_Chance = 0.5,  Drop_Items = { "Cloth", "Hide", "Ruby" } } },
-            {"Ogre",        new Enemy(){Name = "Ogre"    , Level = 3, Hp = 20, Atk = 8 , Def = 2, Gold = 15, Exp = 15, Drop_Chance = 0.5,  Drop_Items = { "Ruby", "Sapphire" } } },
-            {"Golem",       new Enemy(){Name = "Golem"   , Level = 3, Hp = 12, Atk = 8 , Def = 4, Gold = 10, Exp = 12, Drop_Chance = 1.25, Drop_Items = { "Iron ore", "Ruby", "Sapphire" } } },
-            {"Dragon",      new Enemy(){Name = "Dragon"  , Level = 4, Hp = 25, Atk = 12, Def = 6, Gold = 20, Exp = 20, Drop_Chance = 1.25, Drop_Items = { "Steel ore", "Amethyst" } } }
+            {"Goblin",      new Enemy(){Name = "Goblin"  , Level = 1, Hp = 5 , Atk = 4 , Def = 0, Gold = 3 , Exp = 5 , Drop_Chance = 0.5,  Drop_Items = {  DefaultData.Components["Herb"], DefaultData.Components["Cloth"] } } },
+            {"Wolf",        new Enemy(){Name = "Wolf"    , Level = 1, Hp = 6 , Atk = 5 , Def = 0, Gold = 2 , Exp = 6 , Drop_Chance = 0.75, Drop_Items = { DefaultData.Components["Herb"], DefaultData.Components["Hide"] } } },
+            {"Skeleton",    new Enemy(){Name = "Skeleton", Level = 2, Hp = 8 , Atk = 4 , Def = 2, Gold = 1 , Exp = 8 , Drop_Chance = 3,    Drop_Items = { DefaultData.Components["Herb"], DefaultData.Components["Bone"] } } },
+            {"Bandit",      new Enemy(){Name = "Bandit"  , Level = 2, Hp = 10, Atk = 6 , Def = 1, Gold = 8 , Exp = 10, Drop_Chance = 0.5,  Drop_Items = { DefaultData.Components["Cloth"], DefaultData.Components["Hide"], DefaultData.Components["Ruby"] } } },
+            {"Ogre",        new Enemy(){Name = "Ogre"    , Level = 3, Hp = 20, Atk = 8 , Def = 2, Gold = 15, Exp = 15, Drop_Chance = 0.5,  Drop_Items = { DefaultData.Components["Ruby"], DefaultData.Components["Sapphire"] } } },
+            {"Golem",       new Enemy(){Name = "Golem"   , Level = 3, Hp = 12, Atk = 8 , Def = 4, Gold = 10, Exp = 12, Drop_Chance = 1.25, Drop_Items = { DefaultData.Components["Iron ore"], DefaultData.Components["Ruby"], DefaultData.Components["Sapphire"] } } },
+            {"Dragon",      new Enemy(){Name = "Dragon"  , Level = 4, Hp = 25, Atk = 12, Def = 6, Gold = 20, Exp = 20, Drop_Chance = 1.25, Drop_Items = { DefaultData.Components["Steel ore"], DefaultData.Components["Amethyst"] } } }
 
         };
     }

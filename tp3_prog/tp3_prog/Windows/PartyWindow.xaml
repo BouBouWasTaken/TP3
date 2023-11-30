@@ -28,7 +28,7 @@
         <Button x:Name="ButtonUnequip" 
                 Grid.Row="0" Grid.Column="1"
                 Padding="20 5" 
-                IsEnabled="False">Unequip</Button>
+                >Unequip</Button>
 
         <StackPanel x:Name="PanelPartyMembers" 
                     Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" />
