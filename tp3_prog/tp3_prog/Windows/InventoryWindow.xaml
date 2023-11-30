@@ -43,7 +43,8 @@
                            Background="LightGray" TextAlignment="Center">Player inventory (3/3)</TextBlock>
 
                 <ListView x:Name="ListViewPlayer" Height="152">
-                    <ListViewItem>Gold (1562)</ListViewItem>
+                    <ListViewItem>
+                        (1562)</ListViewItem>
                     <ListViewItem>Herb (15)</ListViewItem>
                     <ListViewItem>Leather (5)</ListViewItem>
                 </ListView>

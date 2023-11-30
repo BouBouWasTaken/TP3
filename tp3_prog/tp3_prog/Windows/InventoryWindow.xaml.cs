@@ -8,7 +8,7 @@ namespace tp3_prog
     {
         Party Party { get; set; }
         EquipmentSlot SelectedEquipmentSlot => (EquipmentSlot)ComboBoxType.SelectedItem;
-        Item SelectedItem => (Item)ListViewPlayer.SelectedItem;
+        ItemInventory SelectedItem => (ItemInventory)ListViewPlayer.SelectedItem;
         Hero SelectedHeroToEquip => (Hero)ListViewPartyMembers.SelectedItem;
 
         public InventoryWindow(Party party)
@@ -37,7 +37,7 @@ namespace tp3_prog
             foreach (Hero member in Party.Members)
             {
                 ListViewPartyMembers.Items.Add(member);
-                foreach (Item item in Party.Inventory)
+                foreach (ItemInventory item in Party.Inventory)
                 {
                     ListViewPlayer.Items.Add(item);
                 }
@@ -56,7 +56,7 @@ namespace tp3_prog
             if (SelectedHeroToEquip != null && SelectedItem != null)
             {
                 // Make the hero the currentOwner
-                SelectedItem.CurrentOwner = SelectedHeroToEquip;
+                SelectedItem.Item.CurrentOwner = SelectedHeroToEquip;
                 // TODO :: if it's equipement, add it to the hero's equipment list and make him equip it
                 // therefore changing his stats.
             }
@@ -68,12 +68,12 @@ namespace tp3_prog
             if (SelectedItem == null) return;
 
             // Change the infos
-            TextBlockItemName.Text = SelectedItem.Name;
-            TextBlockItemValue.Text = SelectedItem.Price.ToString();
-            TextBlockItemDescription.Text = SelectedItem.Description;
+            TextBlockItemName.Text = SelectedItem.Item.Name;
+            TextBlockItemValue.Text = SelectedItem.Item.Price.ToString();
+            TextBlockItemDescription.Text = SelectedItem.Item.Description;
 
             // if it's equipement
-            if (SelectedItem is Equipment item)
+            if (SelectedItem.Item is Equipment item)
             {
                 // Add the more specific infos
                 TextBlockItemType.Text = "Equipement - ";
@@ -83,8 +83,8 @@ namespace tp3_prog
                 foreach (Classe classe in item.Required_Class)
                 {
                     TextBlockItemType.Text += $"{classe.Name} ";
-                }
-                */
+                }*/
+
             }
 
         }
@@ -99,12 +99,12 @@ namespace tp3_prog
             }
 
             // else make a new selection
-            List<Item> newSelection = new();
+            List<ItemInventory> newSelection = new();
 
             // Foreach item that respects the new type
-            foreach (Item item in Party.Inventory)
+            foreach (ItemInventory item in Party.Inventory)
             {
-                if (item is Equipment equipment && equipment.Type == SelectedEquipmentSlot)
+                if (item.Item is Equipment equipment && equipment.Type == SelectedEquipmentSlot)
                 {
                     newSelection.Add(item);
                 }
@@ -132,7 +132,7 @@ namespace tp3_prog
 
         }
 
-        private void RefreshInventory(List<Item> inventory, string condition = "")
+        private void RefreshInventory(List<ItemInventory> inventory, string condition = "")
         {
             // TODO :: Make it so that the refresh respects both the condition from the 
             // searchBar AND the type.
@@ -141,10 +141,10 @@ namespace tp3_prog
             ListViewPlayer.Items.Clear();
             int count = 0;
             // For every item in his inventory
-            foreach (Item item in inventory)
+            foreach (ItemInventory item in inventory)
             {
                 // If the item's name contains what's in the SearchBar
-                if (item.Name.Contains(condition))
+                if (item.Item.Name.Contains(condition))
                 {
                     // Increments a count
                     count++;

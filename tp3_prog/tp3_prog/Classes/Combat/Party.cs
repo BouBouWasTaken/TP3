@@ -12,7 +12,7 @@ namespace tp3_prog
 
         public Zone Zone { get; set; }
         public List<Hero> Members { get; set; }
-        public List<Item> Inventory = new List<Item>();
+        public List<ItemInventory> Inventory = new List<ItemInventory>();
 
         public int Gold { get; set; }
 
@@ -21,19 +21,21 @@ namespace tp3_prog
         // Missing zone
         private void BaseItems()
         {
-            Gold += 200;
+            //Gold += 200;
             for (int i = 0; i < 5; i++)
             {
-                Inventory.Add(DefaultData.Usables["Health potion"]);
-                Inventory.Add(DefaultData.Usables["Mana potion"]);
 
+                ItemInventory b = new ItemInventory(DefaultData.Usables["Health potion"], 5);
+                ItemInventory c = new ItemInventory(DefaultData.Usables["Mana potion"], 5);
+                Inventory.Add(b);
+                Inventory.Add(c);
             }
-            for (int i = 0; i < 3; i++)
+            /*for (int i = 0; i < 3; i++)
             {
                 Inventory.Add(DefaultData.Usables["Shuriken"]);
             }
             Inventory.Add(DefaultData.Usables["Bomb"]);
-
+            */
         }
 
     }
