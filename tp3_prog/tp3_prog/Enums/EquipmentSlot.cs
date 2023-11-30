@@ -6,7 +6,7 @@
         Weapon,
         Helmet,
         Armor,
-        Legs,
+        Pants,
         Boots,
         Shield,
         Gloves,

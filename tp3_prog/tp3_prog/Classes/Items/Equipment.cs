@@ -11,7 +11,7 @@ namespace tp3_prog
         public int? Def { get; set; }
         public int? Mp { get; set; }
         public int? Hp { get; set; }
-        public List<int> Required_Class { get; set; } = new List<int>(); // Gives the Id of the classes that can use it
+        public List<string> Required_Class { get; set; } = new List<string>(); // Gives the Id of the classes that can use it
 
         public void Equip()
         {
