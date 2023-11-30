@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 
 namespace tp3_prog
@@ -7,16 +8,17 @@ namespace tp3_prog
     {
         List<UserControlPartyCreation> windowsList = new List<UserControlPartyCreation>();
         List<Hero> heroList = new List<Hero>();
+        List<Classe> ClassesPossibles = new List<Classe>();
         public PartyCreationWindow()
         {
             InitializeComponent();
             ButtonStart.Click += ButtonStart_Click;
             // Créer dynamiquement les UserControls, passer les objets nécessaires en paramètre au UserControl
             PanelPartyCreations.Children.Clear();
-
+            ClassesPossibles = DefaultData.Classes.Values.ToList();
             for (int i = 0; i < DefaultData.Classes.Count; i++)
             {
-                var userControlPartyCreation = new UserControlPartyCreation(DefaultData.Classes[i]);
+                var userControlPartyCreation = new UserControlPartyCreation(ClassesPossibles[i]);
                 PanelPartyCreations.Children.Add(userControlPartyCreation);
                 windowsList.Add(userControlPartyCreation);
 

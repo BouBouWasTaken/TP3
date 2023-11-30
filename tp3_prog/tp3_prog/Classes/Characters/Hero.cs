@@ -12,6 +12,7 @@ namespace tp3_prog
         public int Attack { get; set; }
         public int Defense { get; set; }
         public List<Equipment>? Equipment { get; set; }
+        public List<Usable>? Usables { get; set; }
         public Hero(string name, Classe classe, int level, int experience, int health, int magicPoints, int attack, int defense)
         {
             Name = name;

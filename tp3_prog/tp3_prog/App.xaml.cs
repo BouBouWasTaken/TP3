@@ -16,36 +16,40 @@ namespace tp3_prog
             return new BitmapImage(new Uri("pack://application:,,,/tp3_prog;component/assets/" + imageUrl));
         }
 
+        /* 
+           Create a list of components with "Sapphire" and "Steel ore"
+           = Components.Values.Where(component => component.Name == "Sapphire" || component.Name == "Steel ore").ToList();
+        */
     }
 
     static class DefaultData
     {
         public static Dictionary<string, Classe> Classes = new Dictionary<string, Classe>()
         {
-             {"Fighter",    new Classe(){Name = "Fighter",HpByLevel = 10,MpByLevel = 3,AtkByLevel = 2,DefByLevel = 3,Portrait = "fighter.png"}},
-             {"Thief",      new Classe(){Name = "Thief",HpByLevel = 8,MpByLevel = 3,AtkByLevel = 3,DefByLevel = 2,Portrait = "thief.png"}},
-             {"Cleric",     new Classe(){Name = "Cleric",HpByLevel = 8,MpByLevel = 4,AtkByLevel = 2,DefByLevel = 2,Portrait = "cleric.png"}},
-             {"Mage",       new Classe(){Name = "Mage",HpByLevel = 6,MpByLevel = 6,AtkByLevel = 2,DefByLevel = 2,Portrait = "mage.png"}},
+             {"Fighter",    new Classe(){Name = "Fighter",  HpByLevel = 10,MpByLevel = 3,   AtkByLevel = 2,DefByLevel = 3,Portrait = "fighter.png"}},
+             {"Thief",      new Classe(){Name = "Thief",    HpByLevel = 8,MpByLevel = 3,    AtkByLevel = 3,DefByLevel = 2,Portrait = "thief.png"}},
+             {"Cleric",     new Classe(){Name = "Cleric",   HpByLevel = 8,MpByLevel = 4,    AtkByLevel = 2,DefByLevel = 2,Portrait = "cleric.png"}},
+             {"Mage",       new Classe(){Name = "Mage",     HpByLevel = 6,MpByLevel = 6,    AtkByLevel = 2,DefByLevel = 2,Portrait = "mage.png"}},
         };
 
         public static Dictionary<string, Skill> Skills = new Dictionary<string, Skill>()
         {
             {"Bash",            new Skill() { ClasseName = "Fighter", Name = "Bash",           LevelRequired = 1, MagicPoints = 3, Targets = MagicTarget.RandomEnemy, Type= MagicEffectType.Damage, Multiplier = 1.5} },
-            { "Rallying Shout", new Skill() { ClasseName = "Fighter", Name = "Rallying Shout", LevelRequired = 2, MagicPoints = 5, Targets = MagicTarget.AllAllies,   Type= MagicEffectType.HealHp,   Multiplier = 0.35} },
+            { "Rallying Shout", new Skill() { ClasseName = "Fighter", Name = "Rallying Shout", LevelRequired = 2, MagicPoints = 5, Targets = MagicTarget.AllAllies,   Type= MagicEffectType.HealHp, Multiplier = 0.35} },
             {"Backstab",        new Skill() { ClasseName = "Thief",   Name = "Backstab",       LevelRequired = 1, MagicPoints = 3, Targets = MagicTarget.RandomEnemy, Type= MagicEffectType.Damage, Multiplier = 1.75} },
             {"Fan of knives",   new Skill() { ClasseName = "Thief",   Name = "Fan of knives",  LevelRequired = 2, MagicPoints = 5, Targets = MagicTarget.AllEnemies,  Type= MagicEffectType.Damage, Multiplier = 0.5} },
-            {"Heal",            new Skill() { ClasseName = "Cleric",  Name = "Heal",           LevelRequired = 1, MagicPoints = 3, Targets = MagicTarget.RandomAlly,  Type= MagicEffectType.HealHp,   Multiplier = 1} },
-            {"Benediction",     new Skill() { ClasseName = "Cleric",  Name = "Benediction",    LevelRequired = 2, MagicPoints = 5, Targets = MagicTarget.AllAllies,   Type= MagicEffectType.HealHp,   Multiplier = 0.5} },
-            {"Fireball",        new Skill() { ClasseName = "Mage", Name = "Fireball", LevelRequired = 1, MagicPoints = 3, Targets = MagicTarget.AllEnemies, Type= MagicEffectType.Damage, Multiplier = 0.5} },
-            {"Meteor",          new Skill() { ClasseName = "Mage", Name = "Meteor", LevelRequired = 2, MagicPoints = 5, Targets = MagicTarget.AllEnemies, Type= MagicEffectType.Damage, Multiplier = 0.75} },
+            {"Heal",            new Skill() { ClasseName = "Cleric",  Name = "Heal",           LevelRequired = 1, MagicPoints = 3, Targets = MagicTarget.RandomAlly,  Type= MagicEffectType.HealHp, Multiplier = 1} },
+            {"Benediction",     new Skill() { ClasseName = "Cleric",  Name = "Benediction",    LevelRequired = 2, MagicPoints = 5, Targets = MagicTarget.AllAllies,   Type= MagicEffectType.HealHp, Multiplier = 0.5} },
+            {"Fireball",        new Skill() { ClasseName = "Mage",    Name = "Fireball",       LevelRequired = 1, MagicPoints = 3, Targets = MagicTarget.AllEnemies,  Type= MagicEffectType.Damage, Multiplier = 0.5} },
+            {"Meteor",          new Skill() { ClasseName = "Mage",    Name = "Meteor",         LevelRequired = 2, MagicPoints = 5, Targets = MagicTarget.AllEnemies,  Type= MagicEffectType.Damage, Multiplier = 0.75} },
         };
 
         public static Dictionary<string, Usable> Usables = new Dictionary<string, Usable>()
         {
-            {"Health potion",   new Usable(){Name = "Health potion", Value = 25, Target = MagicTarget.Self, EffectType = MagicEffectType.HealHp, Power = 10} },
-            {"Mana potion",     new Usable(){Name = "Mana potion", Value = 35, Target = MagicTarget.Self, EffectType = MagicEffectType.HealMp, Power = 10} },
-            {"Bomb",            new Usable(){Name = "Bomb", Value = 50, Target = MagicTarget.AllEnemies, EffectType = MagicEffectType.Damage, Power = 15} },
-            {"Shuriken",        new Usable(){Name = "Shuriken", Value = 10, Target = MagicTarget.RandomEnemy, EffectType = MagicEffectType.Damage, Power = 10} }
+            {"Health potion",   new Usable(){Name = "Health potion",Value = 25, Target = MagicTarget.Self,       EffectType = MagicEffectType.HealHp, Power = 10} },
+            {"Mana potion",     new Usable(){Name = "Mana potion",  Value = 35, Target = MagicTarget.Self,       EffectType = MagicEffectType.HealMp, Power = 10} },
+            {"Bomb",            new Usable(){Name = "Bomb",         Value = 50, Target = MagicTarget.AllEnemies, EffectType = MagicEffectType.Damage, Power = 15} },
+            {"Shuriken",        new Usable(){Name = "Shuriken",     Value = 10, Target = MagicTarget.RandomEnemy,EffectType = MagicEffectType.Damage, Power = 10} }
         };
         public static Dictionary<string, Component> Components = new Dictionary<string, Component>()
         {
@@ -65,25 +69,25 @@ namespace tp3_prog
 
         public static Dictionary<string, Equipment> Equipments = new Dictionary<string, Equipment>()
         {                                                                   //fighter = 0,  thief = 1, cleric = 2,mage = 3
-            {"Bronze sword",          new Equipment(){Name = "Bronze sword", Value = 50, Type = EquipmentSlot.Weapon, Atk = 1, Def = 1,    Required_Class =  {"Fighter", "Thief" } }},
-            {"Iron sword",            new Equipment(){Name = "Iron sword", Value = 100, Type = EquipmentSlot.Weapon, Atk = 2, Def = 1,     Required_Class =  {"Fighter", "Thief" } }},
-            {"Excalibur",             new Equipment(){Name = "Excalibur", Value = 10000, Type = EquipmentSlot.Weapon, Atk = 10, Def = 5,   Required_Class =  { "Fighter" } }},
-            {"Pine staff",            new Equipment(){Name = "Pine staff", Value = 50, Type = EquipmentSlot.Weapon, Atk = 1, Mp = 3,       Required_Class =  { "Cleric", "Mage"} }},
-            {"Oak staff",             new Equipment(){Name = "Oak staff", Value = 100, Type = EquipmentSlot.Weapon, Atk = 2, Mp = 4,       Required_Class =  { "Cleric", "Mage"} }},
-            {"Mahogany staff",        new Equipment(){Name = "Mahogany staff", Value = 200, Type = EquipmentSlot.Weapon, Atk = 3, Mp = 5,  Required_Class =  { "Cleric", "Mage" } }},
-            {"Bronze knife",          new Equipment(){Name = "Bronze knife", Value = 25, Type = EquipmentSlot.Weapon, Atk = 1,             Required_Class =  { "Fighter", "Thief" } }},
-            {"Iron knife",            new Equipment(){Name = "Iron knife", Value = 75, Type = EquipmentSlot.Weapon, Atk = 2,               Required_Class =  { "Fighter", "Thief", "Cleric", "Mage" } }},
-            {"Bronze mace",           new Equipment(){Name = "Bronze mace", Value = 35, Type = EquipmentSlot.Weapon, Atk = 1, Def = 1,     Required_Class =  { "Fighter", "Cleric" } }},
-            {"Iron mace",             new Equipment(){Name = "Iron mace", Value = 80, Type = EquipmentSlot.Weapon, Atk = 2, Def = 1,       Required_Class =  { "Fighter", "Cleric" } }},
-            {"Bronze chestpiece",     new Equipment(){Name = "Bronze chestpiece", Value = 100, Type = EquipmentSlot.Armor,                 Required_Class =  { "Fighter" } }},
-            {"Iron chestpiece",       new Equipment(){Name = "Iron chestpiece", Value = 200, Type = EquipmentSlot.Armor,                   Required_Class =  { "Fighter" } }},
-            {"Leather armor",         new Equipment(){Name = "Leather armor", Value = 50, Type = EquipmentSlot.Armor, Atk = 1, Def = 1,    Required_Class =  { "Thief", "Cleric" } }},
-            {"Studded leather armor", new Equipment(){Name = "Studded leather armor", Value = 100, Type = EquipmentSlot.Armor,             Required_Class =  { "Thief", "Cleric" } }},
-            {"Tattered robes",        new Equipment(){Name = "Tattered robes", Value = 25, Type = EquipmentSlot.Armor,Def=0,Mp=3,          Required_Class =  { "Cleric", "Mage"} }},
-            {"Mage robes",            new Equipment(){Name = "Mage robes", Value = 250, Type = EquipmentSlot.Armor,Def=1,Mp=4,             Required_Class =  { "Cleric", "Mage"} }},
-            {"Enchanted robes",       new Equipment(){Name = "Enchanted robes", Value = 1000, Type = EquipmentSlot.Armor,Def=2,Mp=8,       Required_Class =  { "Cleric", "Mage" } }},
-            {"Basic pants",           new Equipment(){Name = "Basic pants", Value = 25, Type = EquipmentSlot.Pants,Def=1,Hp=3,             Required_Class =  { "Fighter", "Thief", "Cleric", "Mage" } }},
-            {"Well-woven pants",      new Equipment(){Name = "Well-woven pants", Value = 100, Type = EquipmentSlot.Pants,Def=1,Hp=5,       Required_Class =  { "Fighter", "Thief", "Cleric", "Mage" } }},
+            {"Bronze sword",          new Equipment(){Name = "Bronze sword",          Value = 50,    Type = EquipmentSlot.Weapon, Atk = 1, Def = 1, Required_Class =  {"Fighter", "Thief" } }},
+            {"Iron sword",            new Equipment(){Name = "Iron sword",            Value = 100,   Type = EquipmentSlot.Weapon, Atk = 2, Def = 1, Required_Class =  {"Fighter", "Thief" } }},
+            {"Excalibur",             new Equipment(){Name = "Excalibur",             Value = 10000, Type = EquipmentSlot.Weapon, Atk = 10, Def = 5,Required_Class =  { "Fighter" } }},
+            {"Pine staff",            new Equipment(){Name = "Pine staff",            Value = 50,    Type = EquipmentSlot.Weapon, Atk = 1, Mp = 3,  Required_Class =  { "Cleric", "Mage"} }},
+            {"Oak staff",             new Equipment(){Name = "Oak staff",             Value = 100,   Type = EquipmentSlot.Weapon, Atk = 2, Mp = 4,  Required_Class =  { "Cleric", "Mage"} }},
+            {"Mahogany staff",        new Equipment(){Name = "Mahogany staff",        Value = 200,   Type = EquipmentSlot.Weapon, Atk = 3, Mp = 5,  Required_Class =  { "Cleric", "Mage" } }},
+            {"Bronze knife",          new Equipment(){Name = "Bronze knife",          Value = 25,    Type = EquipmentSlot.Weapon, Atk = 1,          Required_Class =  { "Fighter", "Thief" } }},
+            {"Iron knife",            new Equipment(){Name = "Iron knife",            Value = 75,    Type = EquipmentSlot.Weapon, Atk = 2,          Required_Class =  { "Fighter", "Thief", "Cleric", "Mage" } }},
+            {"Bronze mace",           new Equipment(){Name = "Bronze mace",           Value = 35,    Type = EquipmentSlot.Weapon, Atk = 1, Def = 1, Required_Class =  { "Fighter", "Cleric" } }},
+            {"Iron mace",             new Equipment(){Name = "Iron mace",             Value = 80,    Type = EquipmentSlot.Weapon, Atk = 2, Def = 1, Required_Class =  { "Fighter", "Cleric" } }},
+            {"Bronze chestpiece",     new Equipment(){Name = "Bronze chestpiece",     Value = 100,   Type = EquipmentSlot.Armor,                    Required_Class =  { "Fighter" } }},
+            {"Iron chestpiece",       new Equipment(){Name = "Iron chestpiece",       Value = 200,   Type = EquipmentSlot.Armor,                    Required_Class =  { "Fighter" } }},
+            {"Leather armor",         new Equipment(){Name = "Leather armor",         Value = 50,    Type = EquipmentSlot.Armor, Atk = 1, Def = 1,  Required_Class =  { "Thief", "Cleric" } }},
+            {"Studded leather armor", new Equipment(){Name = "Studded leather armor", Value = 100,   Type = EquipmentSlot.Armor,                    Required_Class =  { "Thief", "Cleric" } }},
+            {"Tattered robes",        new Equipment(){Name = "Tattered robes",        Value = 25,    Type = EquipmentSlot.Armor,Def=0,Mp=3,         Required_Class =  { "Cleric", "Mage"} }},
+            {"Mage robes",            new Equipment(){Name = "Mage robes",            Value = 250,   Type = EquipmentSlot.Armor,Def=1,Mp=4,         Required_Class =  { "Cleric", "Mage"} }},
+            {"Enchanted robes",       new Equipment(){Name = "Enchanted robes",       Value = 1000,  Type = EquipmentSlot.Armor,Def=2,Mp=8,         Required_Class =  { "Cleric", "Mage" } }},
+            {"Basic pants",           new Equipment(){Name = "Basic pants",           Value = 25,    Type = EquipmentSlot.Pants,Def=1,Hp=3,         Required_Class =  { "Fighter", "Thief", "Cleric", "Mage" } }},
+            {"Well-woven pants",      new Equipment(){Name = "Well-woven pants",      Value = 100,   Type = EquipmentSlot.Pants,Def=1,Hp=5,         Required_Class =  { "Fighter", "Thief", "Cleric", "Mage" } }},
         };
         public static Dictionary<string, Enemy> Enemies = new Dictionary<string, Enemy>()
         {

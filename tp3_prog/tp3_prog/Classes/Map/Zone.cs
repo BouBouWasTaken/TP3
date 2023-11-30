@@ -8,5 +8,6 @@ namespace tp3_prog
         public int ChanceOfCombat { get; set; }
         public List<Zone> LinkedZones { get; set; } = new List<Zone>();
         public bool Known = false;
+        public List<Fight>? Fights { get; set; }
     }
 }

@@ -11,7 +11,7 @@ namespace tp3_prog
         public int Def { get; set; }
         public int Gold { get; set; }
         public int Exp { get; set; }
-        public int Drop_Chance { get; set; }
-        public List<Component> Drop_Items { get; set; } = new List<Component>();
+        public double Drop_Chance { get; set; }
+        public List<string> Drop_Items { get; set; } = new List<string>();
     }
 }
