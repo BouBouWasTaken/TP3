@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows;
-using tp3_prog.Classes.Characters;
 
 namespace tp3_prog
 {
@@ -78,13 +77,14 @@ namespace tp3_prog
             {
                 // Add the more specific infos
                 TextBlockItemType.Text = "Equipement - ";
-                TextBlockItemType.Text += $"{item.Slot} - ";
+                TextBlockItemType.Text += $"{item.Type} - ";
 
+                /*  required_class is a list of Int so you have to compare the int with the classes to find the names
                 foreach (Classe classe in item.Required_Class)
                 {
                     TextBlockItemType.Text += $"{classe.Name} ";
                 }
-
+                */
             }
 
         }
@@ -99,12 +99,12 @@ namespace tp3_prog
             }
 
             // else make a new selection
-            List<Item> newSelection = new List<Item>();
+            List<Item> newSelection = new();
 
             // Foreach item that respects the new type
             foreach (Item item in Party.Inventory)
             {
-                if (item is Equipment equipment && equipment.Slot == SelectedEquipmentSlot)
+                if (item is Equipment equipment && equipment.Type == SelectedEquipmentSlot)
                 {
                     newSelection.Add(item);
                 }

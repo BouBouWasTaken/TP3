@@ -9,6 +9,7 @@ namespace tp3_prog
         public int Amount { get; set; }
         public string? Description { get; set; }
         public Hero? CurrentOwner { get; set; } // Who owns it
+        public int Value { get; set; }
 
         public virtual void Sell()
         {

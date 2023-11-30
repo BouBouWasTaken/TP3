@@ -4,12 +4,12 @@ namespace tp3_prog
 {
     public class Recipie
     {
-        public Recipie(List<Ingredient> ingredients)
+        public Recipie(List<Component> ingredients)
         {
             this.Ingredients = ingredients;
         }
 
-        public List<Ingredient> Ingredients { get; set; }
+        public List<Component> Ingredients { get; set; }
 
         public List<Item> MakeItem(List<Item> inventory, int queued = 1)
         {

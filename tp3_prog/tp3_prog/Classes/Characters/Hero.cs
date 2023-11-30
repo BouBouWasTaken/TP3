@@ -1,11 +1,9 @@
 ﻿using System.Collections.Generic;
-using tp3_prog.Classes.Characters;
 
 namespace tp3_prog
 {
     public class Hero : Characters
     {
-        public string Name { get; set; }
         public Classe Classe { get; set; }
         public int Level { get; set; }
         public int Experience { get; set; }

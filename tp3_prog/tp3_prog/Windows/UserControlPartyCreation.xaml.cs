@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Controls;
-using tp3_prog.Classes.Characters;
 
 namespace tp3_prog
 {
     public partial class UserControlPartyCreation : UserControl
     {
-        private List<Classe> ClassesList = new List<Classe>();
+        private readonly List<Classe> ClassesList = new();
         private Classe classe;
         private int currentIndex = 0;
 
@@ -52,7 +51,7 @@ namespace tp3_prog
         }
         public Hero CreateHero()
         {
-            Hero newHero = new Hero(
+            Hero newHero = new(
                     name: TextBoxName.Text,
                     classe: classe,
                     level: 1,

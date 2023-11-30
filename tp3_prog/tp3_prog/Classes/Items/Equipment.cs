@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using tp3_prog.Classes.Characters;
 
 namespace tp3_prog
 {
@@ -7,9 +6,12 @@ namespace tp3_prog
     public class Equipment : Item
     {
 
-        public EquipmentSlot Slot { get; set; } // Helmet
-        public int Value { get; set; } // ATK : 2 OR DEF : 2
-        public List<Classe> Required_Class { get; set; } = new List<Classe>();
+        public EquipmentSlot Type { get; set; } // Helmet
+        public int? Atk { get; set; }
+        public int? Def { get; set; }
+        public int? Mp { get; set; }
+        public int? Hp { get; set; }
+        public List<int> Required_Class { get; set; } = new List<int>(); // Gives the Id of the classes that can use it
 
         public void Equip()
         {
@@ -22,10 +24,6 @@ namespace tp3_prog
             // If NO, put the new on in the slot
         }
 
-        public void AddClass(Classe classe)
-        {
-            Required_Class.Add(classe);
-        }
     }
 }
 

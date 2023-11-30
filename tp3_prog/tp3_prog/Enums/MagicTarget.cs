@@ -3,7 +3,7 @@
 
     public enum MagicTarget
     {
-        User,
+        Self,
         RandomAlly,
         RandomEnemy,
         AllEnemies,

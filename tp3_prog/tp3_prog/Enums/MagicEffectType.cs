@@ -3,6 +3,7 @@
     public enum MagicEffectType
     {
         Damage,
-        Heal
+        HealHp,
+        HealMp
     }
 }
