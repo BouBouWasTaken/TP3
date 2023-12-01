@@ -17,7 +17,7 @@ namespace tp3_prog
         {
             TextBlockLevel.Text = "Lv. " + hero.Level.ToString();
             TextBlockExperience.Text = "Xp: " + hero.Experience.ToString() + "/ 100";
-            TextBoxName.Text = hero.Name;
+            TextBlockName.Text = hero.Name;
             TextBlockHP.Text = "HP: " + hero.Health.ToString();
             TextBlockMP.Text = "HP: " + hero.MagicPoints.ToString();
             TextBlockAttack.Text = "HP: " + hero.Attack.ToString();
