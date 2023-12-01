@@ -3,7 +3,7 @@
     public enum ItemType
     {
         Equipement,
-        Ingredient,
+        Component,
         Usable
     }
 }

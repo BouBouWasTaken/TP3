@@ -3,7 +3,7 @@ namespace tp3_prog
 {
     public class Skill
     {
-        public string ClasseName { get; set; }
+        public Classe Classe { get; set; }
         public string Name { get; set; }
         public int LevelRequired { get; set; }
         public int MagicPoints { get; set; }

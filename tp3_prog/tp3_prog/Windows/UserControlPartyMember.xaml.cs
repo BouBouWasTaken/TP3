@@ -25,7 +25,29 @@ namespace tp3_prog
             if (hero.Classe.Portrait != null)
             {
                 ImagePortrait.Source = App.GetImage(hero.Classe.Portrait);
+            }
+            ListViewEquipments.Items.Clear();
 
+            FillListView(hero);
+        }
+
+        private void FillListView(Hero hero)
+        {
+            if (hero.Equipment != null)
+            {
+
+                foreach (var item in hero.Equipment)
+                {
+                    ListViewEquipments.Items.Add(item);
+                }
+            }
+            if (hero.Usables != null)
+            {
+
+                foreach (var item in hero.Usables)
+                {
+                    ListViewEquipments.Items.Add(item);
+                }
             }
         }
     }

@@ -14,14 +14,14 @@ namespace tp3_prog
 
         public static Dictionary<string, Skill> Skills = new()
         {
-            {"Bash",            new Skill() { ClasseName = "Fighter", Name = "Bash",           LevelRequired = 1, MagicPoints = 3, Targets = MagicTarget.RandomEnemy, Type= MagicEffectType.Damage, Multiplier = 1.5} },
-            { "Rallying Shout", new Skill() { ClasseName = "Fighter", Name = "Rallying Shout", LevelRequired = 2, MagicPoints = 5, Targets = MagicTarget.AllAllies,   Type= MagicEffectType.HealHp, Multiplier = 0.35} },
-            {"Backstab",        new Skill() { ClasseName = "Thief",   Name = "Backstab",       LevelRequired = 1, MagicPoints = 3, Targets = MagicTarget.RandomEnemy, Type= MagicEffectType.Damage, Multiplier = 1.75} },
-            {"Fan of knives",   new Skill() { ClasseName = "Thief",   Name = "Fan of knives",  LevelRequired = 2, MagicPoints = 5, Targets = MagicTarget.AllEnemies,  Type= MagicEffectType.Damage, Multiplier = 0.5} },
-            {"Heal",            new Skill() { ClasseName = "Cleric",  Name = "Heal",           LevelRequired = 1, MagicPoints = 3, Targets = MagicTarget.RandomAlly,  Type= MagicEffectType.HealHp, Multiplier = 1} },
-            {"Benediction",     new Skill() { ClasseName = "Cleric",  Name = "Benediction",    LevelRequired = 2, MagicPoints = 5, Targets = MagicTarget.AllAllies,   Type= MagicEffectType.HealHp, Multiplier = 0.5} },
-            {"Fireball",        new Skill() { ClasseName = "Mage",    Name = "Fireball",       LevelRequired = 1, MagicPoints = 3, Targets = MagicTarget.AllEnemies,  Type= MagicEffectType.Damage, Multiplier = 0.5} },
-            {"Meteor",          new Skill() { ClasseName = "Mage",    Name = "Meteor",         LevelRequired = 2, MagicPoints = 5, Targets = MagicTarget.AllEnemies,  Type= MagicEffectType.Damage, Multiplier = 0.75} },
+            {"Bash",            new Skill() { Classe = Classes["Fighter"], Name = "Bash",           LevelRequired = 1, MagicPoints = 3, Targets = MagicTarget.RandomEnemy, Type= MagicEffectType.Damage, Multiplier = 1.5} },
+            {"Rallying Shout",  new Skill() { Classe = Classes["Fighter"], Name = "Rallying Shout", LevelRequired = 2, MagicPoints = 5, Targets = MagicTarget.AllAllies,   Type= MagicEffectType.HealHp, Multiplier = 0.35} },
+            {"Backstab",        new Skill() { Classe = Classes["Thief"],   Name = "Backstab",       LevelRequired = 1, MagicPoints = 3, Targets = MagicTarget.RandomEnemy, Type= MagicEffectType.Damage, Multiplier = 1.75} },
+            {"Fan of knives",   new Skill() { Classe = Classes["Thief"],   Name = "Fan of knives",  LevelRequired = 2, MagicPoints = 5, Targets = MagicTarget.AllEnemies,  Type= MagicEffectType.Damage, Multiplier = 0.5} },
+            {"Heal",            new Skill() { Classe = Classes["Cleric"],  Name = "Heal",           LevelRequired = 1, MagicPoints = 3, Targets = MagicTarget.RandomAlly,  Type= MagicEffectType.HealHp, Multiplier = 1} },
+            {"Benediction",     new Skill() { Classe = Classes["Cleric"],  Name = "Benediction",    LevelRequired = 2, MagicPoints = 5, Targets = MagicTarget.AllAllies,   Type= MagicEffectType.HealHp, Multiplier = 0.5} },
+            {"Fireball",        new Skill() { Classe = Classes["Mage"],    Name = "Fireball",       LevelRequired = 1, MagicPoints = 3, Targets = MagicTarget.AllEnemies,  Type= MagicEffectType.Damage, Multiplier = 0.5} },
+            {"Meteor",          new Skill() { Classe = Classes["Mage"],    Name = "Meteor",         LevelRequired = 2, MagicPoints = 5, Targets = MagicTarget.AllEnemies,  Type= MagicEffectType.Damage, Multiplier = 0.75} },
         };
 
         public static Dictionary<string, Usable> Usables = new()
