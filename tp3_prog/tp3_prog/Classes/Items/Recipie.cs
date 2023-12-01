@@ -6,7 +6,7 @@ namespace tp3_prog
     {
         public Item ItemCrafted { get; set; } // The item that it crafts
         public int AmountCrafted { get; set; } // how many of that item are crafted
-        public List<ItemInventory> Ingredients { get; set; } // Ingredients & amount needed for it
+        public List<ItemInventory> Ingredients { get; set; } = new(); // Ingredients & amount needed for it
 
 
 

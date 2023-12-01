@@ -4,6 +4,8 @@
     {
         Talk,
         Rumors,
-        Shop
+        Fight,
+        Rooms,
+        Look
     }
 }

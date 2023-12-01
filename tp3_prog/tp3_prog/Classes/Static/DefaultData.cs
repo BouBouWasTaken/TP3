@@ -138,7 +138,6 @@ namespace tp3_prog
                 }
             },
         };
-
         public static Dictionary<string, Recipie> Recipies = new()
         {
             {
@@ -279,8 +278,9 @@ namespace tp3_prog
                     }
 
                 }
-            },
+            }
 
         };
+
     }
 }
