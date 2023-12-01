@@ -69,24 +69,36 @@ namespace tp3_prog
 
             // Change the infos
             TextBlockItemName.Text = SelectedItem.Item.Name;
-            TextBlockItemValue.Text = SelectedItem.Item.Price.ToString();
+            TextBlockItemValue.Text = SelectedItem.Item.Value > 1 ? $"{SelectedItem.Item.Value} Golds" : $"{SelectedItem.Item.Value} Gold";
             TextBlockItemDescription.Text = SelectedItem.Item.Description;
 
+            RefreshMyDetails();
+
+        }
+
+        private void RefreshMyDetails()
+        {
             // if it's equipement
-            if (SelectedItem.Item is Equipment item)
+            if (SelectedItem.Item is Equipment equipment)
             {
                 // Add the more specific infos
                 TextBlockItemType.Text = "Equipement - ";
-                TextBlockItemType.Text += $"{item.Type} - ";
+                TextBlockItemType.Text += $"{equipment.Type} - ";
 
-                /*  required_class is a list of Int so you have to compare the int with the classes to find the names
-                foreach (Classe classe in item.Required_Class)
+                foreach (Classe classe in equipment.Required_Class)
                 {
                     TextBlockItemType.Text += $"{classe.Name} ";
-                }*/
-
+                }
             }
-
+            else if (SelectedItem.Item is Usable usable)
+            {
+                TextBlockItemType.Text = "Usable -";
+                TextBlockItemType.Text += $"\n{usable.EffectType} ({usable.Power}) on {usable.Target}";
+            }
+            else if (SelectedItem.Item is Component component)
+            {
+                TextBlockItemType.Text = "Component -";
+            }
         }
 
         private void ComboBoxType_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
