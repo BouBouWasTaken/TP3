@@ -44,7 +44,8 @@ namespace tp3_prog
             {"Steel ore",   new Component(){Name = "Steel ore",     Value = 10 } },
             {"Iron ingot",  new Component(){Name = "Iron ingot",    Value = 25 } },
             {"Steel ingot", new Component(){Name = "Steel ingot",   Value = 100 } },
-            {"Amethyst",    new Component(){Name = "Amethyst",      Value = 150 } }
+            {"Amethyst",    new Component(){Name = "Amethyst",      Value = 150 } },
+            {"Magical cloth",new Component(){Name = "Magical cloth",      Value = 100 } }
 
         };
 
@@ -68,7 +69,7 @@ namespace tp3_prog
             {"Mage robes",            new Equipment(){Name = "Mage robes",            Value = 250,   Type = EquipmentSlot.Armor,Def=1,Mp=4,         Required_Class =  { Classes["Cleric"], Classes["Mage"] } }},
             {"Enchanted robes",       new Equipment(){Name = "Enchanted robes",       Value = 1000,  Type = EquipmentSlot.Armor,Def=2,Mp=8,         Required_Class =  { Classes["Cleric"], Classes["Mage"] } }},
             {"Basic pants",           new Equipment(){Name = "Basic pants",           Value = 25,    Type = EquipmentSlot.Pants,Def=1,Hp=3,         Required_Class =  { Classes["Fighter"], Classes["Thief"] } }},
-            {"Well-woven pants",      new Equipment(){Name = "Well-woven pants",      Value = 100,   Type = EquipmentSlot.Pants,Def=1,Hp=5,         Required_Class =  { Classes["Fighter"], Classes["Thief"] } }},
+            {"Well-woven pants",      new Equipment(){Name = "Well-woven pants",      Value = 100,   Type = EquipmentSlot.Pants,Def=1,Hp=5,         Required_Class =  { Classes["Fighter"], Classes["Thief"] } }}
 
         };
         public static Dictionary<string, Enemy> Enemies = new()
@@ -136,6 +137,150 @@ namespace tp3_prog
                     }
                 }
             },
+        };
+
+        public static Dictionary<string, Recipie> Recipies = new()
+        {
+            {
+                "Health potion1",
+                new Recipie()
+                {
+                    ItemCrafted = Usables["Health potion"],
+                    AmountCrafted = 1,
+                    Ingredients =
+                    {
+                        new ItemInventory(item: Components["Herb"], amount: 3)
+                    }
+
+                }
+            },
+            {
+                "Health potion3",
+                new Recipie()
+                {
+                    ItemCrafted = Usables["Health potion"],
+                    AmountCrafted = 3,
+                    Ingredients =
+                    {
+                        new ItemInventory(item: Components["Herb"], amount: 5),
+                        new ItemInventory(item: Components["Ruby"], amount: 1)
+                    }
+
+                }
+            },
+            {
+                "Mana potion1",
+                new Recipie()
+                {
+                    ItemCrafted = Usables["Mana potion"],
+                    AmountCrafted = 1,
+                    Ingredients =
+                    {
+                        new ItemInventory(item: Components["Herb"], amount: 3)
+                    }
+
+                }
+            },
+            {
+                "Mana potion3",
+                new Recipie()
+                {
+                    ItemCrafted = Usables["Mana potion"],
+                    AmountCrafted = 3,
+                    Ingredients =
+                    {
+                        new ItemInventory(item: Components["Herb"], amount: 5),
+                        new ItemInventory(item: Components["Sapphire"], amount: 1)
+                    }
+
+                }
+            },
+            {
+                "Leather",
+                new Recipie()
+                {
+                    ItemCrafted = Components["Leather"],
+                    AmountCrafted = 1,
+                    Ingredients =
+                    {
+                        new ItemInventory(item: Components["Hide"], amount: 1),
+                        new ItemInventory(item: Components["Bone"], amount: 3)
+                    }
+
+                }
+            },
+            {
+                "Iron ingot",
+                new Recipie()
+                {
+                    ItemCrafted = Components["Iron ingot"],
+                    AmountCrafted = 1,
+                    Ingredients =
+                    {
+                        new ItemInventory(item: Components["Iron ore"], amount: 3)
+                    }
+
+                }
+            },
+            {
+                "Steel ingot",
+                new Recipie()
+                {
+                    ItemCrafted = Components["Steel ingot"],
+                    AmountCrafted = 1,
+                    Ingredients =
+                    {
+                        new ItemInventory(item: Components["Steel ore"], amount: 3),
+                        new ItemInventory(item: Components["Iron ingot"], amount: 1)
+                    }
+
+                }
+            },
+            {
+                "Magical cloth",
+                new Recipie()
+                {
+                    ItemCrafted = Components["Magical cloth"],
+                    AmountCrafted = 1,
+                    Ingredients =
+                    {
+                        new ItemInventory(item: Components["Cloth"], amount: 3),
+                        new ItemInventory(item: Components["Sapphire"], amount: 1)
+                    }
+
+                }
+            },
+            {
+                "Enchanted robes",
+                new Recipie()
+                {
+                    ItemCrafted = Equipments["Enchanted robes"],
+                    AmountCrafted = 1,
+                    Ingredients =
+                    {
+                        new ItemInventory(item: Components["Magical cloth"], amount: 5),
+                        new ItemInventory(item: Components["Sapphire"], amount: 2),
+                        new ItemInventory(item: Components["Leather"], amount: 5)
+                    }
+
+                }
+            },
+            {
+                "Excalibur",
+                new Recipie()
+                {
+                    ItemCrafted = Equipments["Excalibur"],
+                    AmountCrafted = 1,
+                    Ingredients =
+                    {
+                        new ItemInventory(item: Components["Steel ingot"], amount: 10),
+                        new ItemInventory(item: Components["Magical cloth"], amount: 3),
+                        new ItemInventory(item: Components["Leather"], amount: 10)
+                    }
+
+                }
+            },
+
         };
     }
 }
