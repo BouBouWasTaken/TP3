@@ -4,6 +4,6 @@ namespace tp3_prog
 {
     public class Auberge
     {
-        public List<Room> Rooms { get; set; } = new List<Room>();
+        public List<Room> Rooms { get; set; } = new();
     }
 }

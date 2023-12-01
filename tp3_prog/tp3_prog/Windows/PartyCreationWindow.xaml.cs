@@ -4,11 +4,13 @@ using System.Windows;
 
 namespace tp3_prog
 {
+    // Fait Par Samuel Therrien-Côté
+
     public partial class PartyCreationWindow : Window
     {
-        List<UserControlPartyCreation> windowsList = new List<UserControlPartyCreation>();
-        List<Hero> heroList = new List<Hero>();
-        List<Classe> ClassesPossibles = new List<Classe>();
+        List<UserControlPartyCreation> windowsList = new();
+        List<Hero> heroList = new();
+        List<Classe> ClassesPossibles = new();
         public PartyCreationWindow()
         {
             InitializeComponent();

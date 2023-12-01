@@ -10,7 +10,7 @@ namespace tp3_prog
         public int DefByLevel { get; set; }
         public int HpByLevel { get; set; }
         public int MpByLevel { get; set; }
-        public List<Skill> Magics { get; set; } = new List<Skill>();
+        public List<Skill> Magics { get; set; } = new();
 
     }
 

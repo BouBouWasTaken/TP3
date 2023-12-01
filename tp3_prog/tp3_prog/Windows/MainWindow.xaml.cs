@@ -55,7 +55,7 @@ namespace tp3_prog
 
         private void ButtonQuit_Click(object sender, RoutedEventArgs e)
         {
-            Close();
+            Application.Current.Shutdown();
         }
     }
 }

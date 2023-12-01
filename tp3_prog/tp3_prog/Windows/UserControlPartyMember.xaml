@@ -10,7 +10,7 @@
         <Image x:Name="ImagePortrait" Height="64" Width="64" Margin="0 0 10 0" />
 
         <WrapPanel>
-            <StackPanel>
+            <StackPanel Width="100">
                 <TextBlock x:Name="TextBlockName" FontWeight="ExtraBold">Name</TextBlock>
 
                 <WrapPanel Margin="0 10">

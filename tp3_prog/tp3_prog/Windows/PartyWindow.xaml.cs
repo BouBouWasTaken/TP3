@@ -3,6 +3,8 @@ using System.Windows;
 
 namespace tp3_prog
 {
+    // Fait Par Samuel Therrien-Côté
+
     public partial class PartyWindow : Window
     {
         List<UserControlPartyMember> windowsList = new();
@@ -25,6 +27,13 @@ namespace tp3_prog
 
         private void ButtonUnequip_Click(object sender, RoutedEventArgs e)
         {
+        }
+        public void Refresh()
+        {
+            foreach (var window in windowsList)
+            {
+                window.FillWindow();
+            }
         }
     }
 }

@@ -6,12 +6,12 @@
              xmlns:local="clr-namespace:tp3_prog"
              mc:Ignorable="d" 
              d:DesignHeight="64" d:DesignWidth="220">
-    <WrapPanel Background="White">
+    <WrapPanel Background="White" Width="250">
         <Button x:Name="ButtonClassPrevious" >⬅️</Button>
 
         <Image x:Name="ImagePortrait" Height="64" Width="64" Margin="0 0 10 0" />
 
-        <StackPanel>
+        <StackPanel Width="100">
             <TextBox x:Name="TextBoxName" FontWeight="ExtraBold">Name</TextBox>
 
             <WrapPanel Margin="0 10">

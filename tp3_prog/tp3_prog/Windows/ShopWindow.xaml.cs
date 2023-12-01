@@ -7,6 +7,8 @@ namespace tp3_prog
     /// </summary>
     public partial class ShopWindow : Window
     {
+
+        // Fait Par Samuel Therrien-Côté
         public ShopWindow()
         {
             InitializeComponent();

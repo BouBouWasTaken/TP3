@@ -15,7 +15,8 @@
                    Background="Black" Foreground="White" 
                    TextAlignment="Center" Padding="10">Party creation</TextBlock>
 
-        <StackPanel x:Name="PanelPartyCreations" />
+        <StackPanel x:Name="PanelPartyCreations" Width="250"/>
+        
 
         <Button x:Name="ButtonStart" 
                 Padding="20 5" 

@@ -7,28 +7,32 @@ namespace tp3_prog
     /// </summary>
     public partial class UserControlPartyMember : UserControl
     {
+        // Fait Par Samuel Therrien-Côté
+
+        Hero CurrentHero { get; set; }
         public UserControlPartyMember(Hero hero)
         {
             InitializeComponent();
-            FillWindow(hero);
+            CurrentHero = hero;
+            FillWindow();
         }
 
-        private void FillWindow(Hero hero)
+        public void FillWindow()
         {
-            TextBlockLevel.Text = "Lv. " + hero.Level.ToString();
-            TextBlockExperience.Text = "Xp: " + hero.Experience.ToString() + "/ 100";
-            TextBlockName.Text = hero.Name;
-            TextBlockHP.Text = "HP: " + hero.Health.ToString();
-            TextBlockMP.Text = "HP: " + hero.MagicPoints.ToString();
-            TextBlockAttack.Text = "HP: " + hero.Attack.ToString();
-            TextBlockDefense.Text = "HP: " + hero.Defense.ToString();
-            if (hero.Classe.Portrait != null)
+            TextBlockLevel.Text = "Lv. " + CurrentHero.Level.ToString();
+            TextBlockExperience.Text = "Xp: " + CurrentHero.Experience.ToString() + "/ 100";
+            TextBlockName.Text = CurrentHero.Name;
+            TextBlockHP.Text = "HP: " + CurrentHero.Health.ToString();
+            TextBlockMP.Text = "HP: " + CurrentHero.MagicPoints.ToString();
+            TextBlockAttack.Text = "HP: " + CurrentHero.Attack.ToString();
+            TextBlockDefense.Text = "HP: " + CurrentHero.Defense.ToString();
+            if (CurrentHero.Classe.Portrait != null)
             {
-                ImagePortrait.Source = App.GetImage(hero.Classe.Portrait);
+                ImagePortrait.Source = App.GetImage(CurrentHero.Classe.Portrait);
             }
             ListViewEquipments.Items.Clear();
 
-            FillListView(hero);
+            FillListView(CurrentHero);
         }
 
         private void FillListView(Hero hero)

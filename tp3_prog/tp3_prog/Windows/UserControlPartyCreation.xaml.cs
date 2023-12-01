@@ -3,6 +3,7 @@ using System.Windows.Controls;
 
 namespace tp3_prog
 {
+    // Fait Par Samuel Therrien-Côté
     public partial class UserControlPartyCreation : UserControl
     {
         private readonly List<Classe> ClassesList = new();
@@ -46,7 +47,6 @@ namespace tp3_prog
             if (classe.Portrait != null)
             {
                 ImagePortrait.Source = App.GetImage(classe.Portrait);
-
             }
         }
         public Hero CreateHero()

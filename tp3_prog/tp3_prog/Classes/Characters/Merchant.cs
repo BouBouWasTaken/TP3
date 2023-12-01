@@ -7,4 +7,3 @@ namespace tp3_prog
         public List<ItemInventory> Inventory = new();
     }
 }
-

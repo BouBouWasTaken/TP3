@@ -2,7 +2,6 @@
 {
     public class Round : Fight
     {
-
         public Round(Party heroes, EnemyGroup enemies) : base(heroes, type)
         {
             Heroes_Party = heroes;

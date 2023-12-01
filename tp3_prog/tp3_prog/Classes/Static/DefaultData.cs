@@ -11,7 +11,6 @@ namespace tp3_prog
              {"Cleric",     new Classe(){Name = "Cleric",   HpByLevel = 8,MpByLevel = 4,    AtkByLevel = 2,DefByLevel = 2,Portrait = "cleric.png"}},
              {"Mage",       new Classe(){Name = "Mage",     HpByLevel = 6,MpByLevel = 6,    AtkByLevel = 2,DefByLevel = 2,Portrait = "mage.png"}},
         };
-
         public static Dictionary<string, Skill> Skills = new()
         {
             {"Bash",            new Skill() { Classe = Classes["Fighter"], Name = "Bash",           LevelRequired = 1, MagicPoints = 3, Targets = MagicTarget.RandomEnemy, Type= MagicEffectType.Damage, Multiplier = 1.5} },
@@ -23,7 +22,6 @@ namespace tp3_prog
             {"Fireball",        new Skill() { Classe = Classes["Mage"],    Name = "Fireball",       LevelRequired = 1, MagicPoints = 3, Targets = MagicTarget.AllEnemies,  Type= MagicEffectType.Damage, Multiplier = 0.5} },
             {"Meteor",          new Skill() { Classe = Classes["Mage"],    Name = "Meteor",         LevelRequired = 2, MagicPoints = 5, Targets = MagicTarget.AllEnemies,  Type= MagicEffectType.Damage, Multiplier = 0.75} },
         };
-
         public static Dictionary<string, Usable> Usables = new()
         {
             {"Health potion",   new Usable(){Name = "Health potion",Value = 25, Target = MagicTarget.Self,       EffectType = MagicEffectType.HealHp, Power = 10} },
@@ -48,7 +46,6 @@ namespace tp3_prog
             {"Magical cloth",new Component(){Name = "Magical cloth",      Value = 100 } }
 
         };
-
         public static Dictionary<string, Equipment> Equipments = new()
         {
             {"Bronze sword",          new Equipment(){Name = "Bronze sword",          Value = 50,    Type = EquipmentSlot.Weapon, Atk = 1, Def = 1, Required_Class =  { Classes["Fighter"], Classes["Thief"] } }},
