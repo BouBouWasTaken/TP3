@@ -71,13 +71,13 @@ namespace tp3_prog
         };
         public static Dictionary<string, Enemy> Enemies = new()
         {
-            {"Goblin",      new Enemy(){Name = "Goblin"  , Level = 1, Hp = 5 , Atk = 4 , Def = 0, Gold = 3 , Exp = 5 , Drop_Chance = 0.5,  Drop_Items = { Components["Herb"], Components["Cloth"] } } },
-            {"Wolf",        new Enemy(){Name = "Wolf"    , Level = 1, Hp = 6 , Atk = 5 , Def = 0, Gold = 2 , Exp = 6 , Drop_Chance = 0.75, Drop_Items = { Components["Herb"], Components["Hide"] } } },
-            {"Skeleton",    new Enemy(){Name = "Skeleton", Level = 2, Hp = 8 , Atk = 4 , Def = 2, Gold = 1 , Exp = 8 , Drop_Chance = 3,    Drop_Items = { Components["Herb"], Components["Bone"] } } },
-            {"Bandit",      new Enemy(){Name = "Bandit"  , Level = 2, Hp = 10, Atk = 6 , Def = 1, Gold = 8 , Exp = 10, Drop_Chance = 0.5,  Drop_Items = { Components["Cloth"], Components["Hide"], Components["Ruby"] } } },
-            {"Ogre",        new Enemy(){Name = "Ogre"    , Level = 3, Hp = 20, Atk = 8 , Def = 2, Gold = 15, Exp = 15, Drop_Chance = 0.5,  Drop_Items = { Components["Ruby"], Components["Sapphire"] } } },
-            {"Golem",       new Enemy(){Name = "Golem"   , Level = 3, Hp = 12, Atk = 8 , Def = 4, Gold = 10, Exp = 12, Drop_Chance = 1.25, Drop_Items = { Components["Iron ore"], Components["Ruby"], Components["Sapphire"] } } },
-            {"Dragon",      new Enemy(){Name = "Dragon"  , Level = 4, Hp = 25, Atk = 12, Def = 6, Gold = 20, Exp = 20, Drop_Chance = 1.25, Drop_Items = { Components["Steel ore"], Components["Amethyst"] } } }
+            {"Goblin",      new Enemy(){Name = "Goblin"  , Level = 1, Max_Hp = 5 , Atk = 4 , Def = 0, Gold = 3 , Exp = 5 , Drop_Chance = 0.5,  Drop_Items = { Components["Herb"], Components["Cloth"] } } },
+            {"Wolf",        new Enemy(){Name = "Wolf"    , Level = 1, Max_Hp = 6 , Atk = 5 , Def = 0, Gold = 2 , Exp = 6 , Drop_Chance = 0.75, Drop_Items = { Components["Herb"], Components["Hide"] } } },
+            {"Skeleton",    new Enemy(){Name = "Skeleton", Level = 2, Max_Hp = 8 , Atk = 4 , Def = 2, Gold = 1 , Exp = 8 , Drop_Chance = 3,    Drop_Items = { Components["Herb"], Components["Bone"] } } },
+            {"Bandit",      new Enemy(){Name = "Bandit"  , Level = 2, Max_Hp = 10, Atk = 6 , Def = 1, Gold = 8 , Exp = 10, Drop_Chance = 0.5,  Drop_Items = { Components["Cloth"], Components["Hide"], Components["Ruby"] } } },
+            {"Ogre",        new Enemy(){Name = "Ogre"    , Level = 3, Max_Hp = 20, Atk = 8 , Def = 2, Gold = 15, Exp = 15, Drop_Chance = 0.5,  Drop_Items = { Components["Ruby"], Components["Sapphire"] } } },
+            {"Golem",       new Enemy(){Name = "Golem"   , Level = 3, Max_Hp = 12, Atk = 8 , Def = 4, Gold = 10, Exp = 12, Drop_Chance = 1.25, Drop_Items = { Components["Iron ore"], Components["Ruby"], Components["Sapphire"] } } },
+            {"Dragon",      new Enemy(){Name = "Dragon"  , Level = 4, Max_Hp = 25, Atk = 12, Def = 6, Gold = 20, Exp = 20, Drop_Chance = 1.25, Drop_Items = { Components["Steel ore"], Components["Amethyst"] } } }
 
         };
         public static Dictionary<string, Merchant> Merchants = new()

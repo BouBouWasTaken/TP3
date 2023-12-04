@@ -7,11 +7,14 @@ namespace tp3_prog
 
     public partial class PartyWindow : Window
     {
+        private Party party;
         List<UserControlPartyMember> windowsList = new();
         public PartyWindow(Party party)
         {
             InitializeComponent();
+            this.party = party;
             ButtonUnequip.Click += ButtonUnequip_Click;
+            ShopWindowTest.Click += ShopWindowTest_Click;
             Title = "Current Party";
             // Créer dynamiquement les UserControls, passer les objets nécessaires en paramètre au UserControl
             PanelPartyMembers.Children.Clear();
@@ -34,6 +37,15 @@ namespace tp3_prog
             {
                 window.FillWindow();
             }
+        }
+
+
+        // To test Shop window since we're not there yet
+        private void ShopWindowTest_Click(object sender, RoutedEventArgs e)
+        {
+            Merchant merchant = DefaultData.Merchants["Basic Armorsmith"];
+            Window shopWindow = new ShopWindow(merchant, this.party);
+            shopWindow.Show();
         }
     }
 }

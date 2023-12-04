@@ -12,7 +12,13 @@
         }
         public override string ToString()
         {
+            if (Amount == -1)
+            {
+                return Item.Name + " ( Infinite )";
+
+            }
             return Item.Name + " ( " + Amount + " )";
+
         }
     }
 }

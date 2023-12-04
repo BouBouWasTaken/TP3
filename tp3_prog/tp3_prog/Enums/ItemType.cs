@@ -2,6 +2,7 @@
 {
     public enum ItemType
     {
+        All,
         Equipement,
         Component,
         Usable

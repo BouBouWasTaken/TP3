@@ -41,9 +41,9 @@ namespace tp3_prog
         {
             TextBoxName.Text = classe.Name;
             TextBlockHP.Text = "HP: " + classe.HpByLevel.ToString();
-            TextBlockMP.Text = "HP: " + classe.MpByLevel.ToString();
-            TextBlockAttack.Text = "HP: " + classe.AtkByLevel.ToString();
-            TextBlockDefense.Text = "HP: " + classe.DefByLevel.ToString();
+            TextBlockMP.Text = "MP: " + classe.MpByLevel.ToString();
+            TextBlockAttack.Text = "ATK: " + classe.AtkByLevel.ToString();
+            TextBlockDefense.Text = "DEF: " + classe.DefByLevel.ToString();
             if (classe.Portrait != null)
             {
                 ImagePortrait.Source = App.GetImage(classe.Portrait);
