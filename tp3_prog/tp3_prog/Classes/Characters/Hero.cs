@@ -8,7 +8,10 @@ namespace tp3_prog
         public int Level { get; set; }
         public int Experience { get; set; }
         public int Health { get; set; }
+        public int Current_Health { get; set; }
         public int MagicPoints { get; set; }
+        public int Current_MagicPoints { get; set; }
+        public List<Skill> Skills = new();
         public int Attack { get; set; }
         public int Defense { get; set; }
         public List<ItemInventory>? Equipment { get; set; } = new();
