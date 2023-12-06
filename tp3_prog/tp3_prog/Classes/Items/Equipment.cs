@@ -38,10 +38,28 @@ namespace tp3_prog
                 CurrentOwner.UpdateMyStats(this);
             }
 
-            // If YES, put the current equiped in the inventory
-            // put the new on in the slot
+        }
 
-            // If NO, put the new on in the slot
+
+        public void Unequip(Hero hero)
+        {
+            // NOTE: Don't forget to add the item back in the party's inventory
+
+            // if the hero does have the item
+            if (hero.Equipment.Contains(this))
+            {
+                // Takes it out
+                hero.Equipment.Remove(this);
+                // Erases the stats
+                hero.EraseItemStats(this);
+                // Changes the owner
+                CurrentOwner = null;
+            }
+            // if he doesn't for 'x' reasons
+            else
+            {
+                return;
+            }
         }
 
         public override string ToString()
