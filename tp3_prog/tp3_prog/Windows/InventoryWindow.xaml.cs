@@ -43,6 +43,9 @@ namespace tp3_prog
                 }
             }
 
+            Party.Members[0].Equipment.Add(DefaultData.Equipments["Bronze sword"]);
+            Party.Members[0].UpdateMyStats(DefaultData.Equipments["Bronze sword"]);
+
             // Starting index
             ComboBoxType.SelectedIndex = 0;
             ListViewPlayer.SelectedIndex = 0;
@@ -55,10 +58,12 @@ namespace tp3_prog
             // If there's a selected hero and an item
             if (SelectedHeroToEquip != null && SelectedItem != null)
             {
-                // Make the hero the currentOwner
-                SelectedItem.Item.CurrentOwner = SelectedHeroToEquip;
                 // TODO :: if it's equipement, add it to the hero's equipment list and make him equip it
                 // therefore changing his stats.
+                if (SelectedItem.Item is Equipment equipment)
+                {
+                    equipment.Equip(SelectedHeroToEquip);
+                }
             }
         }
 

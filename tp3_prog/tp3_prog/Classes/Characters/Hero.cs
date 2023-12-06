@@ -14,7 +14,7 @@ namespace tp3_prog
         public List<Skill> Skills = new();
         public int Attack { get; set; }
         public int Defense { get; set; }
-        public List<ItemInventory>? Equipment { get; set; } = new();
+        public List<Equipment>? Equipment { get; set; } = new();
         public List<ItemInventory>? Usables { get; set; } = new();
 
         public Hero(string name, Classe classe, int level, int experience, int health, int magicPoints, int attack, int defense)
@@ -27,6 +27,24 @@ namespace tp3_prog
             MagicPoints = magicPoints;
             Attack = attack;
             Defense = defense;
+            Current_Health = health;
+            Current_MagicPoints = magicPoints;
+        }
+
+        public void UpdateMyStats(Equipment equipment)
+        {
+            Attack += equipment.Atk;
+            Defense += equipment.Def;
+            Health += equipment.Hp;
+            MagicPoints += equipment.Mp;
+        }
+
+        public void EraseItemStats(Equipment equipment)
+        {
+            Attack -= equipment.Atk;
+            Defense -= equipment.Def;
+            Health -= equipment.Hp;
+            MagicPoints -= equipment.Mp;
         }
 
         public override string ToString()

@@ -6,7 +6,7 @@ namespace tp3_prog
     {
         public string? Name { get; set; }
         public int ChanceOfCombat { get; set; }
-        public List<Zone> LinkedZones { get; set; } = new();
+        public List<string> LinkedZones { get; set; } = new();
         // North =1
         // East =2
         // South = 3
