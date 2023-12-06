@@ -42,6 +42,22 @@ namespace tp3_prog
             inventoryWindow.Show();
             Window partyWindow = new PartyWindow(newParty);
             partyWindow.Show();
+
+
+
+            // Test
+
+            List<Enemy> enemyList = new();
+            enemyList.Add(DefaultData.Enemies["Skeleton"]);
+            enemyList.Add(DefaultData.Enemies["Skeleton"]);
+            enemyList.Add(DefaultData.Enemies["Skeleton"]);
+
+
+            EnemyGroup enemyGroup = new EnemyGroup(enemyList);
+
+            Window fighting = new FightWindow(newParty, enemyGroup);
+            fighting.Show();
+
             Close();
         }
     }

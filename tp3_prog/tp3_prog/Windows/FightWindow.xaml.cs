@@ -311,15 +311,14 @@ namespace tp3_prog
 
         private void Fighting()
         {
-            // Checks and enables the available buttons
-            Buttons();
-            // Chnages information in the little screen
-            UpdateCurrentHero();
-
             // Updates the initiative for next turn
             UpdateInitiative();
 
+            // Chnages information in the little screen
+            UpdateCurrentHero();
 
+            // Checks and enables the available buttons
+            Buttons();
 
             // Changes the number to announce next turn
             Rounds++;
@@ -424,6 +423,12 @@ namespace tp3_prog
                 }
 
                 initialisation_Initiative = false;
+                try
+                {
+                    // Might crash since if it's an enemy at '0', it won't be able to convert it
+                    CurrentHero = (Hero)Initiative.Where(x => x.Name == list[0]);
+                }
+                catch { }
                 return;
             }
 
@@ -475,13 +480,14 @@ namespace tp3_prog
                 list.Add(hero);
             }
             // Put every monster in the list
-            foreach (Enemy enemy in Monsters.Enemies_Party)
-            {
-                list.Add(enemy);
-            }
+            //foreach (Enemy enemy in Monsters.Enemies_Party)
+            //{
+            //    list.Add(enemy);
+            //}
 
             // Sort it as a "Random" initiative
-            list.Sort();
+            // TODO :: Sorting
+
 
             // Set my public list for it
             Initiative = list;

@@ -23,9 +23,9 @@ namespace tp3_prog
             TextBlockExperience.Text = "Xp: " + CurrentHero.Experience.ToString() + "/ 100";
             TextBlockName.Text = CurrentHero.Name;
             TextBlockHP.Text = "HP: " + CurrentHero.Health.ToString();
-            TextBlockMP.Text = "HP: " + CurrentHero.MagicPoints.ToString();
-            TextBlockAttack.Text = "HP: " + CurrentHero.Attack.ToString();
-            TextBlockDefense.Text = "HP: " + CurrentHero.Defense.ToString();
+            TextBlockMP.Text = "MP: " + CurrentHero.MagicPoints.ToString();
+            TextBlockAttack.Text = "ATK: " + CurrentHero.Attack.ToString();
+            TextBlockDefense.Text = "DEF: " + CurrentHero.Defense.ToString();
             if (CurrentHero.Classe.Portrait != null)
             {
                 ImagePortrait.Source = App.GetImage(CurrentHero.Classe.Portrait);

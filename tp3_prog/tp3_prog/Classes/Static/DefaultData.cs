@@ -4,6 +4,22 @@ namespace tp3_prog
 {
     public static class DefaultData
     {
+        public static Dictionary<string, Zone> Locations = new()
+        {
+            {"Noob Town", new Zone(){Name = "Noob Town", LinkedZones = {"Forest entrance", null, null, "Slums"} }},
+            {"Slums", new Zone(){Name = "Slums", LinkedZones = {null, null, "Noob Town", null} }},
+            {"Forest entrance", new Zone(){Name = "Forest entrance", LinkedZones = {"Forest crossroads", "Noob Town", null, null} }},
+            {"Forest entrance", new Zone(){Name = "Forest entrance", LinkedZones = {"Forest entrance", null, null, "Slums"} }},
+            {"Noob Town", new Zone(){Name = "Noob Town", LinkedZones = {"Forest entrance", null, null, "Slums"} }},
+            {"Noob Town", new Zone(){Name = "Noob Town", LinkedZones = {"Forest entrance", null, null, "Slums"} }},
+            {"Noob Town", new Zone(){Name = "Noob Town", LinkedZones = {"Forest entrance", null, null, "Slums"} }},
+            {"Noob Town", new Zone(){Name = "Noob Town", LinkedZones = {"Forest entrance", null, null, "Slums"} }},
+            {"Noob Town", new Zone(){Name = "Noob Town", LinkedZones = {"Forest entrance", null, null, "Slums"} }},
+            {"Noob Town", new Zone(){Name = "Noob Town", LinkedZones = {"Forest entrance", null, null, "Slums"} }},
+            {"Noob Town", new Zone(){Name = "Noob Town", LinkedZones = {"Forest entrance", null, null, "Slums"} }},
+
+
+        };
         public static Dictionary<string, Classe> Classes = new()
         {
              {"Fighter",    new Classe(){Name = "Fighter",  HpByLevel = 10,MpByLevel = 3,   AtkByLevel = 2,DefByLevel = 3,Portrait = "fighter.png"}},
@@ -95,7 +111,10 @@ namespace tp3_prog
                         new ItemInventory(item: Equipments["Bronze mace"], amount: 1),
                         new ItemInventory(item: Components["Iron ore"], amount: 3),
                         new ItemInventory(item: Usables["Shuriken"], amount: -1)
-                    }
+                    },
+                    WeaponMult = .5,
+                    ArmorMult = .35,
+                    OtherMult = .1,
                 }
             },
             {
@@ -110,7 +129,10 @@ namespace tp3_prog
                         new ItemInventory(item: Equipments["Tattered robes"], amount: -1),
                         new ItemInventory(item: Equipments["Basic pants"], amount: -1),
                         new ItemInventory(item: Components["Leather"], amount: 3),
-                    }
+                    },
+                    WeaponMult = .25,
+                    ArmorMult = .5,
+                    OtherMult = .1,
                 }
             },
             {
@@ -131,7 +153,10 @@ namespace tp3_prog
                         new ItemInventory(item: Components["Ruby"], amount: 5),
                         new ItemInventory(item: Components["Sapphire"], amount: 5),
                         new ItemInventory(item: Usables["Bomb"], amount: -1),
-                    }
+                    },
+                    WeaponMult = .35,
+                    ArmorMult = .35,
+                    OtherMult = .1,
                 }
             },
         };
