@@ -52,7 +52,6 @@ namespace tp3_prog
             enemyList.Add(DefaultData.Enemies["Skeleton"]);
             enemyList.Add(DefaultData.Enemies["Skeleton"]);
 
-
             EnemyGroup enemyGroup = new EnemyGroup(enemyList);
 
             Window fighting = new FightWindow(newParty, enemyGroup);

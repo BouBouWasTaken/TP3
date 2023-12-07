@@ -4,19 +4,19 @@ namespace tp3_prog
 {
     public static class DefaultData
     {
-        public static Dictionary<string, Zone> Locations = new()
+        public static Dictionary<int, Zone> Locations = new()
         {
-            {"Noob Town", new Zone("Noob Town", new List<string>() { "Forest entrance", null, null, "Slums" }, 0)},
-            {"Slums", new Zone("Slums", new List<string>() { null, null, "Noob Town", null}, 0)},
-            {"Forest entrance", new Zone("Forest entrance", new List < string >() { "Forest crossroads", "Noob Town", null, null }, 0) },
-            { "Forest crossroads", new Zone("Forest crossroads", new List<string>() { "Dark Forest", "Forest entrance", "Adventurer City", null }, 0) },
-            { "Dark Forest", new Zone("Dark Forest", new List <string>() { null, "Forest crossroads", "Cemetary", null }, 0) },
-            { "Cemetary", new Zone("Cemetary", new List<string>() { "Evil crypt", null, null, "Dark forest" }, 0) },
-            { "Evil crypt", new Zone("Evil crypt", new List <string>() { null, "Cemetary", null, null }, 0) },
-            { "Adventurer City", new Zone("Adventurer City", new List < string >() { "Cemetary", null, null, "Cave entrance" }, 0) },
-            { "Cave entrance", new Zone("Cave entrance", new List < string >() { null, "Cave", null, "Adventurer City" }, 0) },
-            { "Cave", new Zone("Cave", new List < string >() { "Cave entrance", "Dragon's Den", null, null }, 0) },
-            { "Dragon's Den", new Zone("Dragon's Den", new List < string >() { null, null, null, "Noob Town" }, 0) },
+            {1 , new Zone("Noob Town", new List<int>() { 3, 0, 0, 2 }, 0)},
+            {2, new Zone("Slums", new List<int>() { 0, 0, 1, 0}, 0)},
+            {3, new Zone("Forest entrance", new List < int >() { 4, 1, 0, 0 }, 0) },
+            { 4, new Zone("Forest crossroads", new List<int>() { 5, 3, 8, 0 }, 0) },
+            { 5, new Zone("Dark Forest", new List <int>() { 0, 4, 6, 0 }, 0) },
+            { 6, new Zone("Cemetary", new List<int>() { 7, 0, 0, 5 }, 0) },
+            { 7, new Zone("Evil crypt", new List <int>() { 0, 6, 0, 0 }, 0) },
+            { 8, new Zone("Adventurer City", new List < int >() { 6, 0, 0, 9 }, 0) },
+            { 9, new Zone("Cave entrance", new List < int >() { 0, 10, 0, 8 }, 0) },
+            { 10, new Zone("Cave", new List < int >() { 9, 11, 0, 0 }, 0) },
+            { 11, new Zone("Dragon's Den", new List < int >() { 0, 0, 0, 1 }, 0) },
         };
         public static Dictionary<string, Classe> Classes = new()
         {

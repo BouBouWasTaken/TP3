@@ -1,35 +1,31 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 
 namespace tp3_prog
 {
     public class Zone
     {
         public string? Name { get; set; }
+
+        public int ZoneId { get; set; }
         public double ChanceOfCombat { get; set; }
-        public List<string> LinkedZones { get; set; } = new();
+        public List<int> LinkedZones { get; set; } = new();
         // North = 1
         // South = 2
         // East  = 3
         // West  = 4
 
-        public Zone(string name, List<string> locations_string, double chances)
+        public Zone(string name, List<int> keys, double chances)
         {
             Name = name;
-            // North = DefaultData.Locations.Values.FirstOrDefault(x => x.Name == locations_string[0]);
-            South = (Zone)DefaultData.Locations.Values.Where(x => x.Name == locations_string[1]);
-            East = (Zone)DefaultData.Locations.Values.Where(x => x.Name == locations_string[2]);
-            West = (Zone)DefaultData.Locations.Values.Where(x => x.Name == locations_string[3]);
-
             ChanceOfCombat = chances;
 
-            // DefaultData.Locations.Keys.Contains(locations_string[0]) ? North = DefaultData.Locations.Values[locations_string[0];
+            LinkedZones = keys;
         }
 
-        // public Zone North = (Zone)DefaultData.Locations.Values.Where(x => x.Name == LinkedZones[0]);
-        public Zone South;
-        public Zone East;
-        public Zone West;
+        public Zone? North => DefaultData.Locations.ContainsKey(LinkedZones[0]) ? DefaultData.Locations[LinkedZones[0]] : null;
+        public Zone? South => DefaultData.Locations.ContainsKey(LinkedZones[1]) ? DefaultData.Locations[LinkedZones[1]] : null;
+        public Zone? East => DefaultData.Locations.ContainsKey(LinkedZones[2]) ? DefaultData.Locations[LinkedZones[2]] : null;
+        public Zone? West => DefaultData.Locations.ContainsKey(LinkedZones[3]) ? DefaultData.Locations[LinkedZones[3]] : null;
 
         public bool Known = false;
     }
