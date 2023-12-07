@@ -9,16 +9,6 @@ namespace tp3_prog
         public string? Description { get; set; }
         public Hero? CurrentOwner { get; set; } // Who owns it
         public int Value { get; set; }
-
-        public virtual void Sell()
-        {
-
-        }
-
-        public virtual void Buy(Hero hero)
-        {
-
-        }
     }
 
 

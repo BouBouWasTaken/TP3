@@ -15,6 +15,7 @@ namespace tp3_prog
             this.party = party;
             ButtonUnequip.Click += ButtonUnequip_Click;
             ShopWindowTest.Click += ShopWindowTest_Click;
+
             Title = "Current Party";
             // Créer dynamiquement les UserControls, passer les objets nécessaires en paramètre au UserControl
             PanelPartyMembers.Children.Clear();
@@ -30,6 +31,7 @@ namespace tp3_prog
 
         private void ButtonUnequip_Click(object sender, RoutedEventArgs e)
         {
+
         }
         public void Refresh()
         {
