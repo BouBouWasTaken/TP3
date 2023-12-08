@@ -54,9 +54,16 @@ namespace tp3_prog
                     Monsters.Enemies_Party[i].Current_HP = Monsters.Enemies_Party[i].Max_Hp;
                     Monsters.Enemies_Party[i].Current_MP = Monsters.Enemies_Party[i].Max_MP;
                 }
-                var userControlEnemy = new UserControlEnemy(Monsters.Enemies_Party[i]);
-                PanelEnemies.Children.Add(userControlEnemy);
+                if (Monsters.Enemies_Party[i].Current_HP > 1)
+                {
+                    var userControlEnemy = new UserControlEnemy(Monsters.Enemies_Party[i]);
+                    PanelEnemies.Children.Add(userControlEnemy);
+                }
+            }
 
+            if (PanelEnemies.Children.Count == 0)
+            {
+                Close();
             }
             initialisation_Panel = false;
         }
@@ -527,6 +534,7 @@ namespace tp3_prog
 
         private void Fighting()
         {
+            // TODO :: GIVE EXP WHEN KILL THINGS
 
             RefreshPanelEnemies();
 
@@ -661,6 +669,10 @@ namespace tp3_prog
 
                 ListViewLog.Items.Add(Log);
 
+                Sliced_Initiative.Add(Initiative[TabIndex]);
+
+                // TODO :: CHECK SO THEY DON'T PLAY RIGHT AFTER THE OTHER
+
                 Sliced_Initiative.Remove(Sliced_Initiative[0]);
 
                 RemoveDeadPeople();
@@ -695,7 +707,7 @@ namespace tp3_prog
             {
                 if (character is Hero hero)
                 {
-                    if (hero.Current_Health <= 0)
+                    if (hero.Current_Health < 1)
                     {
                         dead_people.Add(character);
                         // We don't want to remove the hero from the party cuz he died
@@ -703,7 +715,7 @@ namespace tp3_prog
                 }
                 if (character is Enemy enemy)
                 {
-                    if (enemy.Current_HP <= 0)
+                    if (enemy.Current_HP < 1)
                     {
                         dead_people.Add(character);
                         Initiative.Remove(enemy);
