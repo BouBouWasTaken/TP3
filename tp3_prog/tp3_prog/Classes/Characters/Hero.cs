@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace tp3_prog
 {
@@ -11,7 +12,7 @@ namespace tp3_prog
         public int Current_Health { get; set; }
         public int MagicPoints { get; set; }
         public int Current_MagicPoints { get; set; }
-        public List<Skill> Skills = new();
+        public List<Skill> Skills => DefaultData.Skills.Values.Where(x => x.LevelRequired >= Level && x.Classe == Classe).ToList();
         public int Attack { get; set; }
         public int Defense { get; set; }
         public List<Equipment>? Equipment { get; set; } = new();

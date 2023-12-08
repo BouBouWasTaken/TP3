@@ -49,8 +49,8 @@ namespace tp3_prog
 
             List<Enemy> enemyList = new();
             enemyList.Add(DefaultData.Enemies["Skeleton"]);
-            enemyList.Add(DefaultData.Enemies["Skeleton"]);
-            enemyList.Add(DefaultData.Enemies["Skeleton"]);
+            enemyList.Add(DefaultData.Enemies["Bandit"]);
+            enemyList.Add(DefaultData.Enemies["Ogre"]);
 
             EnemyGroup enemyGroup = new EnemyGroup(enemyList);
 

@@ -15,6 +15,9 @@ namespace tp3_prog
 
         public void Equip(Hero hero)
         {
+            if (CurrentOwner == null) return;
+            if (hero.Equipment == null) return;
+
             bool found = false;
             // Check if he already has an equiped
             foreach (Equipment equipment in hero.Equipment)
@@ -43,6 +46,7 @@ namespace tp3_prog
 
         public void Unequip(Hero hero)
         {
+            if (hero.Equipment == null) return;
             // NOTE: Don't forget to add the item back in the party's inventory
 
             // if the hero does have the item
@@ -64,6 +68,7 @@ namespace tp3_prog
 
         public override string ToString()
         {
+            if (Name == null) return string.Empty;
             return Name;
         }
 
