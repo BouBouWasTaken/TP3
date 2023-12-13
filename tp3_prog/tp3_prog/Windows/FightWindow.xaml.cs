@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Windows;
 
 namespace tp3_prog
@@ -12,12 +11,17 @@ namespace tp3_prog
         private int Rounds = 1;
         private List<Characters> Initiative = new List<Characters>();
         private bool initialisation_Initiative = true;
-        private new int TabIndex = 5;
+        private bool initialisation_Panel = true;
+        private new int TabIndex = 4;
         private Hero? CurrentHero = null;
         private readonly Random Random = new Random();
-        private Fight_Library Fight_Library = new();
+        private List<Characters> Sliced_Initiative = new List<Characters>();
+        private string Log = "";
+        private int Log_Target_Counter = 0;
+
+
         Skill SelectedSkill => (Skill)ListViewSkills.SelectedItem;
-        Usable SelectedItem => (Usable)ListViewItems.SelectedItem;
+        Item SelectedItem => (Item)ListViewItems.SelectedItem;
         public FightWindow(Party party, EnemyGroup enemyGroup)
         {
             if (enemyGroup == null) return;
@@ -31,49 +35,78 @@ namespace tp3_prog
             ButtonSkill.Click += ButtonSkill_Click;
             ButtonItem.Click += ButtonItem_Click;
 
-            // Exemple pour créer dynamiquement des UserControls
-            PanelEnemies.Children.Clear();
-
-            for (int i = 0; i < Monsters.Enemies_Party.Count; i++)
-            {
-                var userControlEnemy = new UserControlEnemy(Monsters.Enemies_Party[i]);
-                PanelEnemies.Children.Add(userControlEnemy);
-            }
+            ListViewLog.Items.Clear();
 
             SetInitiative();
             Fighting();
         }
 
+        private void RefreshPanelEnemies()
+        {
+            if (Monsters == null) return;
+
+            PanelEnemies.Children.Clear();
+
+            for (int i = 0; i < Monsters.Enemies_Party.Count; i++)
+            {
+                if (initialisation_Panel)
+                {
+                    Monsters.Enemies_Party[i].Current_HP = Monsters.Enemies_Party[i].Max_Hp;
+                    Monsters.Enemies_Party[i].Current_MP = Monsters.Enemies_Party[i].Max_MP;
+                }
+                if (Monsters.Enemies_Party[i].Current_HP > 1)
+                {
+                    var userControlEnemy = new UserControlEnemy(Monsters.Enemies_Party[i]);
+                    PanelEnemies.Children.Add(userControlEnemy);
+                }
+            }
+
+            if (PanelEnemies.Children.Count == 0)
+            {
+                Close();
+            }
+            initialisation_Panel = false;
+        }
+
         private void ButtonItem_Click(object sender, RoutedEventArgs e)
         {
             if (SelectedItem == null) return;
+            if (SelectedItem is Usable usable)
+            {
+                List<int> targets = FindMyTarget(usable.Target);
 
-            List<int> targets = FindMyTarget(SelectedItem.Target);
-            if (targets.Count == 0) return;
+                if (targets.Count == 0) return;
 
-            DealingDamage_Item(targets);
+                // TODO :: REMOVE ITEM FROM INVENTORY
+
+                DealingDamage_Item(targets);
+                Fighting();
+            }
         }
 
         private void DealingDamage_Item(List<int> targets)
         {
             // If it's damage, we call the function
-            if (SelectedSkill.Type == MagicEffectType.Damage)
+            if (SelectedItem is Usable usable)
             {
-                ItemAttack(targets, SelectedSkill.Multiplier);
-            }
-            // Else if it's healing
-            else if (SelectedSkill.Type == MagicEffectType.HealHp)
-            {
-                ItemHeal(targets, SelectedSkill.Multiplier);
-            }
-            // Else if it's ManaRegen
-            else
-            {
-                ItemManaRegen(targets, SelectedSkill.Multiplier);
+                if (usable.EffectType == MagicEffectType.Damage)
+                {
+                    ItemAttack(targets);
+                }
+                // Else if it's healing
+                else if (usable.EffectType == MagicEffectType.HealHp)
+                {
+                    ItemHeal(targets);
+                }
+                // Else if it's ManaRegen
+                else
+                {
+                    ItemManaRegen(targets);
+                }
             }
         }
 
-        private void ItemManaRegen(List<int> targets, double multiplier)
+        private void ItemManaRegen(List<int> targets)
         {
             // I NEED A HERO!
             if (SelectedItem == null) return;
@@ -81,20 +114,24 @@ namespace tp3_prog
             // For every 'int'
             foreach (int target in targets)
             {
-                if (Initiative[target] is Hero hero)
+                if (SelectedItem is Usable usable)
                 {
-                    // Regens the mana
-                    int mana = (int)(SelectedItem.Value * multiplier);
-                    hero.Current_MagicPoints += mana;
-                    if (hero.Current_MagicPoints > hero.MagicPoints)
+                    int mana = usable.Power;
+                    if (Initiative[target] is Hero hero)
                     {
-                        hero.Current_MagicPoints = hero.MagicPoints;
+                        // Regens the mana
+                        hero.Current_MagicPoints += mana;
+                        if (hero.Current_MagicPoints > hero.MagicPoints)
+                        {
+                            hero.Current_MagicPoints = hero.MagicPoints;
+                        }
                     }
+                    LogPrintItem(target, mana);
                 }
             }
         }
 
-        private void ItemHeal(List<int> targets, double multiplier)
+        private void ItemHeal(List<int> targets)
         {
             // Is there a hero
             if (SelectedItem == null) return;
@@ -102,20 +139,27 @@ namespace tp3_prog
             // You get what it does
             foreach (int target in targets)
             {
-                if (Initiative[target] is Hero hero)
+                if (SelectedItem is Usable usable)
                 {
-                    // It heals the amount
-                    int heal = (int)(SelectedItem.Value * multiplier);
-                    hero.Current_Health += heal;
-                    if (hero.Current_Health > hero.Health)
+
+                    int heal = usable.Power;
+                    if (Initiative[target] is Hero hero)
                     {
-                        hero.Current_Health = hero.Health;
+                        // It heals the amount
+                        hero.Current_Health += heal;
+                        if (hero.Current_Health > hero.Health)
+                        {
+                            hero.Current_Health = hero.Health;
+                        }
                     }
+                    LogPrintItem(target, heal);
                 }
             }
+
+
         }
 
-        private void ItemAttack(List<int> targets, double multiplier)
+        private void ItemAttack(List<int> targets)
         {
             // Is there a hero
             if (SelectedItem == null) return;
@@ -123,12 +167,109 @@ namespace tp3_prog
             // Foreach int in my list
             foreach (int target in targets)
             {
-                // If the character in the initiative at the 'int' is an enemy
-                if (Initiative[target] is Enemy enemy)
+                if (SelectedItem is Usable usable)
                 {
-                    // Deals the damage
-                    int damage = (int)(SelectedItem.Value * multiplier);
-                    enemy.Current_HP -= damage;
+                    int damage = usable.Power;
+                    // If the character in the initiative at the 'int' is an enemy
+                    if (Initiative[target] is Enemy enemy)
+                    {
+                        // Deals the damage
+                        if (damage > enemy.Def)
+                        {
+                            damage -= enemy.Def;
+                            enemy.Current_HP -= damage;
+                            TakeAwayItem();
+                        }
+                    }
+                    LogPrintItem(target, damage);
+                }
+            }
+            RemoveDeadPeople();
+        }
+
+        private void TakeAwayItem()
+        {
+            if (Party == null) return;
+
+            foreach (ItemInventory item in Party.Inventory)
+            {
+                if (item.Item == SelectedItem)
+                {
+                    item.Amount--;
+                }
+            }
+
+            List<ItemInventory> itemsToRemove = new List<ItemInventory>();
+
+            foreach (ItemInventory item in Party.Inventory)
+            {
+                if (item.Amount == 0)
+                {
+                    itemsToRemove.Add(item);
+                }
+            }
+
+            foreach (ItemInventory item in itemsToRemove)
+            {
+                Party.Inventory.Remove(item);
+            }
+        }
+
+        private void LogPrintItem(int target, int amount)
+        {
+            if (SelectedItem is Usable usable)
+            {
+                if (usable.EffectType == MagicEffectType.Damage)
+                {
+                    if (Log_Target_Counter == 0)
+                    {
+                        Log = $"Round {Rounds} - {CurrentHero} used {SelectedItem} and dealt {amount} damage to ";
+                        Log_Target_Counter++;
+                    }
+
+                    if (Log_Target_Counter > 1)
+                    {
+                        Log += $", {Initiative[target]}";
+                        Log_Target_Counter++;
+                    }
+                    else
+                    {
+                        Log += $"{Initiative[target]}";
+                        Log_Target_Counter++;
+                    }
+                }
+                else if (usable.EffectType == MagicEffectType.HealHp)
+                {
+                    if (Log_Target_Counter == 0)
+                    {
+                        Log = $"Round {Rounds} - {CurrentHero} used {SelectedItem} and healed {amount} health to ";
+                    }
+
+                    if (Log_Target_Counter > 1)
+                    {
+                        Log += $"{Initiative[target]},";
+                    }
+                    else
+                    {
+                        Log += $"{Initiative[target]}";
+                    }
+
+                }
+                else
+                {
+                    if (Log_Target_Counter == 0)
+                    {
+                        Log = $"Round {Rounds} - {CurrentHero} used {SelectedItem} and gave {amount} mana to ";
+                    }
+
+                    if (Log_Target_Counter > 1)
+                    {
+                        Log += $"{Initiative[target]},";
+                    }
+                    else
+                    {
+                        Log += $"{Initiative[target]}";
+                    }
                 }
             }
         }
@@ -137,14 +278,21 @@ namespace tp3_prog
         {
             // Is there a selectedSkill
             if (SelectedSkill == null) return;
+            if (CurrentHero == null) return;
 
-            // Creates a list of int to find where in my initiative my targets are
-            List<int> targets = FindMyTarget(SelectedSkill.Targets);
+            if (CurrentHero.Current_MagicPoints >= SelectedSkill.MagicPoints)
+            {
+                // Creates a list of int to find where in my initiative my targets are
+                List<int> targets = FindMyTarget(SelectedSkill.Targets);
 
-            // If it doesn't give me any targets, we fucked
-            if (targets.Count == 0) return;
+                // If it doesn't give me any targets, we fucked
+                if (targets.Count == 0) return;
 
-            DealingDamage_Skill(targets);
+                DealingDamage_Skill(targets);
+                Fighting();
+                return;
+            }
+            MessageBox.Show("Not enough MagicPoints", "Fuck");
         }
 
         private void DealingDamage_Skill(List<int> targets)
@@ -174,16 +322,17 @@ namespace tp3_prog
             // For every 'int'
             foreach (int target in targets)
             {
+                int mana = (int)(CurrentHero.Attack * multiplier);
                 if (Initiative[target] is Hero hero)
                 {
                     // Regens the mana
-                    int mana = (int)(CurrentHero.Attack * multiplier);
                     hero.Current_MagicPoints += mana;
                     if (hero.Current_MagicPoints > hero.MagicPoints)
                     {
                         hero.Current_MagicPoints = hero.MagicPoints;
                     }
                 }
+                LogPrintSkill(target, mana);
             }
         }
 
@@ -195,15 +344,71 @@ namespace tp3_prog
             // You get what it does
             foreach (int target in targets)
             {
+                int heal = (int)(CurrentHero.Attack * multiplier);
+
                 if (Initiative[target] is Hero hero)
                 {
                     // It heals the amount
-                    int heal = (int)(CurrentHero.Attack * multiplier);
                     hero.Current_Health += heal;
                     if (hero.Current_Health > hero.Health)
                     {
                         hero.Current_Health = hero.Health;
                     }
+                }
+
+                LogPrintSkill(target, heal);
+            }
+        }
+
+        private void LogPrintSkill(int target, int amount)
+        {
+            if (SelectedSkill.Type == MagicEffectType.Damage)
+            {
+                if (Log_Target_Counter == 0)
+                {
+                    Log = $"Round {Rounds} - {CurrentHero} used {SelectedSkill} and dealt {amount} damage to ";
+                }
+
+                if (Log_Target_Counter > 1)
+                {
+                    Log += $"{Initiative[target]},";
+                }
+                else
+                {
+                    Log += $"{Initiative[target]}";
+                }
+            }
+            else if (SelectedSkill.Type == MagicEffectType.HealHp)
+            {
+                if (Log_Target_Counter == 0)
+                {
+                    Log = $"Round {Rounds} - {CurrentHero} used {SelectedSkill} and healed {amount} health to ";
+                }
+
+                if (Log_Target_Counter > 1)
+                {
+                    Log += $"{Initiative[target]},";
+                }
+                else
+                {
+                    Log += $"{Initiative[target]}";
+                }
+
+            }
+            else
+            {
+                if (Log_Target_Counter == 0)
+                {
+                    Log = $"Round {Rounds} - {CurrentHero} used {SelectedSkill} and gave {amount} mana to ";
+                }
+
+                if (Log_Target_Counter > 1)
+                {
+                    Log += $"{Initiative[target]},";
+                }
+                else
+                {
+                    Log += $"{Initiative[target]}";
                 }
             }
         }
@@ -213,6 +418,8 @@ namespace tp3_prog
             // Is there a hero
             if (CurrentHero == null) return;
 
+            int damage = (int)(CurrentHero.Attack * multiplier);
+
             // Foreach int in my list
             foreach (int target in targets)
             {
@@ -220,9 +427,14 @@ namespace tp3_prog
                 if (Initiative[target] is Enemy enemy)
                 {
                     // Deals the damage
-                    int damage = (int)(CurrentHero.Attack * multiplier);
-                    enemy.Current_HP -= damage;
+                    if (damage > enemy.Def)
+                    {
+                        damage -= enemy.Def;
+                        enemy.Current_HP -= damage;
+                        CurrentHero.Current_MagicPoints -= SelectedSkill.MagicPoints;
+                    }
                 }
+                LogPrintSkill(target, damage);
             }
         }
 
@@ -271,7 +483,7 @@ namespace tp3_prog
                 {
                     while (true)
                     {
-                        int randomNb = Random.Next(0, Party.Members.Count);
+                        int randomNb = Random.Next(0, Initiative.Count);
                         if (Initiative[randomNb] is Hero)
                         {
                             list.Add(randomNb);
@@ -284,7 +496,7 @@ namespace tp3_prog
                 {
                     while (true)
                     {
-                        int randomNb = Random.Next(0, Party.Members.Count);
+                        int randomNb = Random.Next(0, Initiative.Count);
                         if (Initiative[randomNb] is Enemy)
                         {
                             list.Add(randomNb);
@@ -302,17 +514,32 @@ namespace tp3_prog
             if (CurrentHero == null) return;
             if (Monsters == null) return;
 
+            Log = $"Round {Rounds} - ";
 
-            int nbOfMonsters = Monsters.Enemies_Party.Count + 1;
-            int target = Random.Next(0, nbOfMonsters);
-            Monsters.Enemies_Party[target].Current_HP -= CurrentHero.Attack;
+            int nbOfMonsters = Monsters.Enemies_Party.Count;
+            int target = Random.Next(0, nbOfMonsters++);
+            Enemy enemy = Monsters.Enemies_Party[target];
+            int damage = 0;
 
+            if (CurrentHero.Attack > enemy.Def)
+            {
+                damage = CurrentHero.Attack - enemy.Def;
+                enemy.Current_HP -= damage;
+            }
+
+            Log += $"{CurrentHero} attacked {enemy} for {damage}";
+
+            Fighting();
         }
 
         private void Fighting()
         {
+            // TODO :: GIVE EXP WHEN KILL THINGS
+
+            RefreshPanelEnemies();
+
             // Updates the initiative for next turn
-            UpdateInitiative();
+            UpdateInitiativeAndLogs();
 
             // Chnages information in the little screen
             UpdateCurrentHero();
@@ -320,16 +547,16 @@ namespace tp3_prog
             // Checks and enables the available buttons
             Buttons();
 
-            // Changes the number to announce next turn
-            Rounds++;
+            Log = "";
+            Log_Target_Counter = 0; ;
         }
 
         private void UpdateCurrentHero()
         {
             if (CurrentHero == null) return;
 
-            TextBlockHeroHP.Text = $"{CurrentHero.Current_Health}/{CurrentHero.Health}";
-            TextBlockHeroMP.Text = $"{CurrentHero.Current_MagicPoints}/{CurrentHero.MagicPoints}";
+            TextBlockHeroHP.Text = $"HP: {CurrentHero.Current_Health}/{CurrentHero.Health}";
+            TextBlockHeroMP.Text = $"MP: {CurrentHero.Current_MagicPoints}/{CurrentHero.MagicPoints}";
             TextBlockHeroName.Text = CurrentHero.Name;
         }
 
@@ -369,7 +596,7 @@ namespace tp3_prog
             // If he doesn't have skills or no points to spare
             if (CurrentHero.MagicPoints == 0 || CurrentHero.Skills.Count == 0)
             {
-                // Deativate it
+                // Deactivate it
                 ButtonSkill.IsEnabled = false;
             }
             else
@@ -403,7 +630,7 @@ namespace tp3_prog
             }
         }
 
-        private void UpdateInitiative()
+        private void UpdateInitiativeAndLogs()
         {
             // TODO :: CHANGE IT SO IT'S ENEMY - PARTY - ENEMY - PARTY
             // TODO :: CHECK IF THERE'S SOMEONE DEAD, REMOVE IF SO 
@@ -411,58 +638,133 @@ namespace tp3_prog
             // Clear the ListView
             ListViewTurnOrder.Items.Clear();
 
-            // Create my next list
-            List<string> list = new();
-
             // Initialises it for the first time
             if (initialisation_Initiative)
             {
                 for (int i = 0; i < 4; i++)
                 {
-                    list.Add(Initiative[i].Name);
+                    Sliced_Initiative.Add(Initiative[i]);
                 }
 
                 initialisation_Initiative = false;
-                try
-                {
-                    // Might crash since if it's an enemy at '0', it won't be able to convert it
-                    CurrentHero = (Hero)Initiative.Where(x => x.Name == list[0]);
-                }
-                catch { }
+
+
+                HeroOrEnemy(Sliced_Initiative[0]);
+
+
+                ShowInitiative(Sliced_Initiative);
                 return;
             }
+            else
+            {
 
-            // If the tab is over the total amount of characters,
-            // reset it
-            if (TabIndex > Initiative.Count)
+                // If the tab is over the total amount of characters,
+                // reset it
+                CheckIndex();
+
+                if (ListViewLog.Items.Count > 2)
+                {
+                    ListViewLog.Items.RemoveAt(0);
+                }
+
+                ListViewLog.Items.Add(Log);
+
+                Sliced_Initiative.Add(Initiative[TabIndex]);
+
+                // TODO :: CHECK SO THEY DON'T PLAY RIGHT AFTER THE OTHER
+
+                Sliced_Initiative.Remove(Sliced_Initiative[0]);
+
+                RemoveDeadPeople();
+
+                HeroOrEnemy(Sliced_Initiative[0]);
+
+                // Show it
+                ShowInitiative(Sliced_Initiative);
+                TabIndex++;
+
+
+            }
+        }
+
+        private void CheckIndex()
+        {
+            if (TabIndex >= Initiative.Count)
             {
                 TabIndex = 0;
+                Rounds++;
             }
+        }
 
-            // removes the first element/player who just played
-            list.RemoveAt(0);
-            // add the fourth player who's on deck
-            list.Add(Initiative[TabIndex].Name);
+        private void RemoveDeadPeople()
+        {
+            if (Monsters == null) return;
+            if (Party == null) return;
 
-            try
+            List<Characters> dead_people = new List<Characters>();
+
+            foreach (Characters character in Sliced_Initiative)
             {
-                // Might crash since if it's an enemy at '0', it won't be able to convert it
-                CurrentHero = (Hero)Initiative.Where(x => x.Name == list[0]);
-            }
-            catch { }
+                if (character is Hero hero)
+                {
+                    if (hero.Current_Health < 1)
+                    {
+                        dead_people.Add(character);
+                        // We don't want to remove the hero from the party cuz he died
+                    }
+                }
+                if (character is Enemy enemy)
+                {
+                    if (enemy.Current_HP < 1)
+                    {
+                        dead_people.Add(character);
+                        Initiative.Remove(enemy);
+                        Monsters.Enemies_Party.Remove((Enemy)character);
+                    }
+                }
 
-            // Show it
-            ShowInitiative(list);
+            }
+
+            foreach (Characters character in dead_people)
+            {
+                Sliced_Initiative.Remove(character);
+
+            }
+
+            while (Sliced_Initiative.Count != 4)
+            {
+                CheckIndex();
+                Sliced_Initiative.Add(Initiative[TabIndex]);
+                TabIndex++;
+            }
+        }
+
+        private void HeroOrEnemy(Characters character)
+        {
+            if (character is Hero)
+            {
+                CurrentHero = (Hero)Sliced_Initiative[0];
+            }
+            else
+            {
+                MonsterAttack((Enemy)Sliced_Initiative[0]);
+            }
+        }
+
+
+
+        private void MonsterAttack(Enemy monster)
+        {
 
         }
 
-        private void ShowInitiative(List<string> list)
+        private void ShowInitiative(List<Characters> list)
         {
             // Since it was already cleared, we 
             // can just straight add it
-            foreach (string name in list)
+            foreach (Characters character in list)
             {
-                ListViewTurnOrder.Items.Add(name);
+                ListViewTurnOrder.Items.Add(character.Name);
             }
         }
 
@@ -479,11 +781,11 @@ namespace tp3_prog
             {
                 list.Add(hero);
             }
-            // Put every monster in the list
-            //foreach (Enemy enemy in Monsters.Enemies_Party)
-            //{
-            //    list.Add(enemy);
-            //}
+
+            foreach (Enemy enemy in Monsters.Enemies_Party)
+            {
+                list.Add(enemy);
+            }
 
             // Sort it as a "Random" initiative
             // TODO :: Sorting

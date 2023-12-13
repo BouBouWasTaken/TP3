@@ -15,11 +15,11 @@ namespace tp3_prog
         private void FillWindow()
         {
             TextBoxName.Text = Enemy.Name;
-            TextBlockHP.Text = $"{Enemy.Current_HP}/{Enemy.Max_Hp}";
-            TextBlockLevel.Text = Enemy.Level.ToString();
-            TextBlockMP.Text = $"{Enemy.Current_MP}/{Enemy.Max_MP}";
-            TextBlockDefense.Text = Enemy.Def.ToString();
-            TextBlockAttack.Text = Enemy.Atk.ToString();
+            TextBlockHP.Text = $"HP: {Enemy.Current_HP}/{Enemy.Max_Hp}";
+            TextBlockLevel.Text = $"LVL: {Enemy.Level}";
+            TextBlockMP.Text = $"MP: {Enemy.Current_MP}/{Enemy.Max_MP}";
+            TextBlockDefense.Text = $"DEF: {Enemy.Def}";
+            TextBlockAttack.Text = $"LVL: {Enemy.Atk}";
         }
     }
 }
