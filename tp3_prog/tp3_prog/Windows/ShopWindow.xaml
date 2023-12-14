@@ -99,6 +99,7 @@
                     </WrapPanel>
 
                     <Button x:Name="ButtonAction" Padding="20 5">Buy (9999 gold)</Button>
+                    <TextBlock x:Name="TextBlockBroke" TextAlignment="Center"  Foreground="Red"></TextBlock>
                 </StackPanel>
             </Grid>
         </StackPanel>

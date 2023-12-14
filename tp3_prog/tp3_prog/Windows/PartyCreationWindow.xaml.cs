@@ -8,9 +8,9 @@ namespace tp3_prog
 
     public partial class PartyCreationWindow : Window
     {
-        List<UserControlPartyCreation> windowsList = new();
-        List<Hero> heroList = new();
-        List<Classe> ClassesPossibles = new();
+        private readonly List<UserControlPartyCreation> windowsList = new();
+        private readonly List<Hero> heroList = new();
+        private readonly List<Classe> ClassesPossibles = new();
         public PartyCreationWindow()
         {
             InitializeComponent();
@@ -47,12 +47,14 @@ namespace tp3_prog
 
             // Test
 
-            List<Enemy> enemyList = new();
-            enemyList.Add(DefaultData.Enemies["Skeleton"]);
-            enemyList.Add(DefaultData.Enemies["Bandit"]);
-            enemyList.Add(DefaultData.Enemies["Ogre"]);
+            List<Enemy> enemyList = new()
+            {
+                DefaultData.Enemies["Skeleton"],
+                DefaultData.Enemies["Bandit"],
+                DefaultData.Enemies["Ogre"]
+            };
 
-            EnemyGroup enemyGroup = new EnemyGroup(enemyList);
+            EnemyGroup enemyGroup = new(enemyList);
 
             Window fighting = new FightWindow(newParty, enemyGroup);
             fighting.Show();

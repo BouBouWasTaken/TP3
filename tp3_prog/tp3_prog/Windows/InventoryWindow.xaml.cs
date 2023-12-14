@@ -62,8 +62,28 @@ namespace tp3_prog
                 // therefore changing his stats.
                 if (SelectedItem.Item is Equipment equipment)
                 {
+                    //SelectedHeroToEquip.Equipment.Add(SelectedItem.Item as Equipment);
                     equipment.Equip(SelectedHeroToEquip);
+                    SelectedItem.Amount--;
                 }
+                else if (SelectedItem.Item is Usable)
+                {
+                    SelectedHeroToEquip.AddUsable(SelectedItem.Item, 1);
+                    SelectedItem.Amount--;
+                }
+            }
+            ListViewPlayer.Items.Clear();
+            foreach (ItemInventory item in Party.Inventory)
+            {
+                if (item.Amount == 0)
+                {
+                    Party.Inventory.Remove(item);
+                    break;
+                }
+            }
+            foreach (ItemInventory item in Party.Inventory)
+            {
+                ListViewPlayer.Items.Add(item);
             }
         }
 
@@ -100,7 +120,7 @@ namespace tp3_prog
                 TextBlockItemType.Text = "Usable -";
                 TextBlockItemType.Text += $"\n{usable.EffectType} ({usable.Power}) on {usable.Target}";
             }
-            else if (SelectedItem.Item is Component component)
+            else if (SelectedItem.Item is Component)
             {
                 TextBlockItemType.Text = "Component -";
             }

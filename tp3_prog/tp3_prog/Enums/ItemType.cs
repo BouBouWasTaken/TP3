@@ -5,6 +5,7 @@
         All,
         Equipement,
         Component,
-        Usable
+        Usable,
+        Recipie
     }
 }
