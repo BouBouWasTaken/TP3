@@ -306,6 +306,12 @@ namespace tp3_prog
                     {
                         if (recipie.HasIngredients(currentParty.Inventory))
                         {
+                            currentParty.AddItem(recipie.ItemCrafted, recipie.AmountCrafted);
+
+                            foreach (var item in recipie.Ingredients)
+                            {
+                                currentParty.RemoveItem(item.Item, item.Amount);
+                            }
                             TextBlockBroke.Text = "Crafted!";
                         }
                         else
