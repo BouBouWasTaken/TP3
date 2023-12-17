@@ -15,7 +15,7 @@ namespace tp3_prog
             InitializeComponent();
             this.party = party;
             ButtonUnequip.Click += ButtonUnequip_Click;
-            ShopWindowTest.Click += ShopWindowTest_Click;
+            RefreshData.Click += RefreshData_Click;
 
             Title = "Current Party";
             // Créer dynamiquement les UserControls, passer les objets nécessaires en paramètre au UserControl
@@ -63,8 +63,10 @@ namespace tp3_prog
 
 
         // To test Shop window since we're not there yet
-        private void ShopWindowTest_Click(object sender, RoutedEventArgs e)
+        private void RefreshData_Click(object sender, RoutedEventArgs e)
         {
+            Refresh();
+            /*Test for the shop window
             // ShopWindow Test with Merchant
             Merchant merchant = DefaultData.Merchants["Basic Armorsmith"];
             Window shopWindow = new ShopWindow(merchant, this.party);
@@ -73,6 +75,7 @@ namespace tp3_prog
             //Crafter newCrafter = DefaultData.Crafters[1];
             //Window shopWindow = new ShopWindow(newCrafter, this.party);
             shopWindow.Show();
+            */
         }
     }
 }

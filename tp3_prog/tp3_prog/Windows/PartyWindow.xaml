@@ -32,7 +32,7 @@
 
         <StackPanel x:Name="PanelPartyMembers" 
                     Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" />
-        <Button x:Name="ShopWindowTest" Padding="20 5">Shop</Button>
+        <Button x:Name="RefreshData" Padding="20 5">Refresh Data</Button>
 
     </Grid>
     

@@ -49,6 +49,11 @@ namespace tp3_prog
                 }
             }
         }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 
 

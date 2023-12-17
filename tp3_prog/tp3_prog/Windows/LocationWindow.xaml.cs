@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
@@ -32,7 +32,7 @@ namespace tp3_prog
 
             ListViewInteractables.Items.Clear();
 
-            Interaction signs = new Interaction(999, SelectedZone, "Sign");
+            Interaction signs = new(999, SelectedZone, "Sign");
             ListViewInteractables.Items.Add(signs);
             foreach (Interaction interaction in SelectedZone.Interactions)
             {
@@ -134,7 +134,7 @@ namespace tp3_prog
 
         private void GoblinOpenFight(object sender, RoutedEventArgs e)
         {
-            List<Enemy> list = new List<Enemy>();
+            List<Enemy> list = new();
             for (int i = 0; i <= 3; i++)
             {
 
@@ -150,7 +150,7 @@ namespace tp3_prog
                 list.Add(enemy1);
             }
 
-            EnemyGroup enemyGroup = new EnemyGroup(list);
+            EnemyGroup enemyGroup = new(list);
             Window window = new FightWindow(Party, enemyGroup);
             window.Show();
             beatenGoblins = true;
@@ -188,7 +188,7 @@ namespace tp3_prog
 
         private void BanditOpenFight(object sender, RoutedEventArgs e)
         {
-            List<Enemy> list = new List<Enemy>();
+            List<Enemy> list = new();
             for (int i = 0; i <= 4; i++)
             {
                 Enemy enemy = DefaultData.Enemies.Values.FirstOrDefault(x => x.Name == "Bandit");
@@ -197,7 +197,7 @@ namespace tp3_prog
             }
 
 
-            EnemyGroup enemyGroup = new EnemyGroup(list);
+            EnemyGroup enemyGroup = new(list);
             Window window = new FightWindow(Party, enemyGroup);
             window.Show();
             beatenBandit = true;
