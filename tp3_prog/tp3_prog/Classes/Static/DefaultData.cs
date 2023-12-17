@@ -140,7 +140,7 @@ namespace tp3_prog
         {
             {
                 "Basic Weaponsmith",
-                new MerchantStore()
+                new Merchant()
                 {
                     Name = "Basic Weaponsmith",
                     Inventory =
@@ -159,7 +159,7 @@ namespace tp3_prog
             },
             {
                 "Basic Armorsmith",
-                new MerchantStore()
+                new Merchant()
                 {
                     Name = "Basic Armorsmith",
                     Inventory =
@@ -177,7 +177,7 @@ namespace tp3_prog
             },
             {
                 "Advanced Smith",
-                new MerchantStore()
+                new Merchant()
                 {
                     Name = "Advanced Smith",
                     Inventory =
