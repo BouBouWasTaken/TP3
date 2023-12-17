@@ -1,22 +1,22 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 
 namespace tp3_prog
 {
     public static class DefaultData
     {
         public static Dictionary<int, Zone> Locations = new()
-        {
-            { 1 , new Zone("Noob Town", new List<int>() { 3, 0, 0, 2 }, 0)},
-            { 2, new Zone("Slums", new List<int>() { 0, 0, 1, 0}, 0)},
-            { 3, new Zone("Forest entrance", new List < int >() { 4, 1, 0, 0 }, 0) },
-            { 4, new Zone("Forest crossroads", new List<int>() { 5, 3, 8, 0 }, 0) },
-            { 5, new Zone("Dark Forest", new List <int>() { 0, 4, 6, 0 }, 0) },
-            { 6, new Zone("Cemetary", new List<int>() { 7, 0, 0, 5 }, 0) },
+        {// North, South, East, West
+            {1 , new Zone("Noob Town", new List<int>() { 3, 0, 0, 2 }, 0)},
+            {2, new Zone("Slums", new List<int>() { 0, 0, 1, 0}, 0)},
+            {3, new Zone("Forest entrance", new List < int >() { 4, 1, 0, 0 }, 0) },
+            { 4, new Zone("Forest crossroads", new List<int>() { 5, 3, 0, 8 }, 0) },
+            { 5, new Zone("Dark Forest", new List <int>() { 0, 4, 0, 6 }, 0) },
+            { 6, new Zone("Cemetary", new List<int>() { 7, 0, 5, 0 }, 0) },
             { 7, new Zone("Evil crypt", new List <int>() { 0, 6, 0, 0 }, 0) },
-            { 8, new Zone("Adventurer City", new List < int >() { 6, 0, 0, 9 }, 0) },
-            { 9, new Zone("Cave entrance", new List < int >() { 0, 10, 0, 8 }, 0) },
+            { 8, new Zone("Adventurer City", new List < int >() { 6, 0, 4, 9 }, 0) },
+            { 9, new Zone("Cave entrance", new List < int >() { 0, 10, 8, 0 }, 0) },
             { 10, new Zone("Cave", new List < int >() { 9, 11, 0, 0 }, 0) },
-            { 11, new Zone("Dragon's Den", new List < int >() { 0, 0, 0, 1 }, 0) },
+            { 11, new Zone("Dragon's Den", new List < int >() { 0, 0, 1, 0 }, 0) },
         };
         public static Dictionary<string, Classe> Classes = new()
         {
@@ -83,6 +83,47 @@ namespace tp3_prog
             {"Well-woven pants",      new Equipment(){Name = "Well-woven pants",      Value = 100,   Type = EquipmentSlot.Pants,Def=1,Hp=5,         Required_Class =  { Classes["Fighter"], Classes["Thief"] } }}
 
         };
+        public static Dictionary<int, Interaction> Interaction = new()
+        {
+            { 0, new Interaction(0, Locations[1], "Peasant")},
+            { 2, new Interaction(1, Locations[1], "Basic Weaponsmith") },
+            { 3, new Interaction(2, Locations[1], "Basic Armorsmith") },
+            { 4, new Interaction(3, Locations[1], "Noob Town Crafter") },
+            { 5, new Interaction(4, Locations[1], "Noob Inn") },
+            { 12, new Interaction(9, Locations[2], "Bandit Gang" ) },
+            { 6, new Interaction(5, Locations[3], "Ranger") },
+            { 8, new Interaction(6, Locations[8], "Advanced Smith") },
+            { 9, new Interaction(7, Locations[8], "Adventurer City Crafter") },
+            { 10, new Interaction(8, Locations[5], "Goblin Camp") },
+
+        };
+
+        public static Dictionary<int, Line> Lines = new()
+        {
+            {0, new Line(0, "Talk", "It's safe inside the city walls") },
+            {1, new Line(0, "Rumors", "They say Adventurer City lies to the East!") },
+            {2, new Line(1, "Talk", "We don't have much in Noob Town, try visiting shops in adventurer City.") },
+            {3, new Line(2, "Rumors", "Merchants will give you a better price if you sell them the right kind of items.") },
+            {4, new Line(3, "Talk", "Crafting is often cheaper, if you have the components.") },
+            {5, new Line(4, "Rooms", "Welcome to Noobie Inn") },
+            {6, new Line(5, "Talk", "Be wary of sleeping in the woods, enemies might ambush you!") },
+            {7, new Line(5, "Rumors", "There are reports of skeletons to the north.") },
+            {8, new Line(6, "Talk", "You won't find diner weapons and armors anywhere!") },
+            {9, new Line(6, "Rumors", "The cave to the east is dangerous.. stay out of it!") },
+            {10, new Line(7, "Look", "The shop seems identical to the one in Noob Town.") },
+            {11, new Line(8, "Look", "A busy Goblin Camp, you hear the warning hors as you approach") },
+            {12, new Line(8, "Look", "A quiet Goblin Camp") },
+            {13, new Line(9, "Talk", "Get lost punks, this is our turf!") },
+            {14, new Line(9, "Look", "They are now indeed part of the turf.") },
+
+
+
+
+
+
+
+
+        };
         public static Dictionary<string, Enemy> Enemies = new()
         {
             {"Goblin",      new Enemy(){Name = "Goblin"  , Level = 1, Max_Hp = 5 , Atk = 4 , Def = 0, Gold = 3 , Exp = 5 , Drop_Chance = 0.5,  Drop_Items = { Components["Herb"], Components["Cloth"] } } },
@@ -99,7 +140,7 @@ namespace tp3_prog
         {
             {
                 "Basic Weaponsmith",
-                new Merchant()
+                new MerchantStore()
                 {
                     Name = "Basic Weaponsmith",
                     Inventory =
@@ -118,7 +159,7 @@ namespace tp3_prog
             },
             {
                 "Basic Armorsmith",
-                new Merchant()
+                new MerchantStore()
                 {
                     Name = "Basic Armorsmith",
                     Inventory =
@@ -136,7 +177,7 @@ namespace tp3_prog
             },
             {
                 "Advanced Smith",
-                new Merchant()
+                new MerchantStore()
                 {
                     Name = "Advanced Smith",
                     Inventory =

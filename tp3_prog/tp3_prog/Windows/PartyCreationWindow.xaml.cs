@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 
@@ -36,28 +36,15 @@ namespace tp3_prog
 
             Party newParty = new(heroList);
 
-            Window windowLocation = new LocationWindow();
-            windowLocation.Show();
+            if (newParty.Zone != null)
+            {
+                Window windowLocation = new LocationWindow(newParty.Zone, newParty);
+                windowLocation.Show();
+            }
             Window inventoryWindow = new InventoryWindow(newParty);
             inventoryWindow.Show();
             Window partyWindow = new PartyWindow(newParty);
             partyWindow.Show();
-
-
-
-            // Test
-
-            List<Enemy> enemyList = new()
-            {
-                DefaultData.Enemies["Skeleton"],
-                DefaultData.Enemies["Bandit"],
-                DefaultData.Enemies["Ogre"]
-            };
-
-            EnemyGroup enemyGroup = new(enemyList);
-
-            Window fighting = new FightWindow(newParty, enemyGroup);
-            fighting.Show();
 
             Close();
         }
