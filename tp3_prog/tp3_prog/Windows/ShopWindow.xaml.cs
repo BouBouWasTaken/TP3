@@ -14,9 +14,9 @@ namespace tp3_prog
         ItemInventory? SelectedItem;
         string BuyOrSell = "";
 
-        private Merchant currentMerchant = new();
+        private MerchantStore currentMerchant = new();
         private Party currentParty;
-        public ShopWindow(Merchant merchant, Party party)
+        public ShopWindow(MerchantStore merchant, Party party)
         {
 
             InitializeComponent();

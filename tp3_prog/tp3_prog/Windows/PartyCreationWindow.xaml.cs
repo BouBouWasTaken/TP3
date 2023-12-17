@@ -36,26 +36,15 @@ namespace tp3_prog
 
             Party newParty = new(heroList);
 
-            Window windowLocation = new LocationWindow();
-            windowLocation.Show();
+            if (newParty.Zone != null)
+            {
+                Window windowLocation = new LocationWindow(newParty.Zone, newParty);
+                windowLocation.Show();
+            }
             Window inventoryWindow = new InventoryWindow(newParty);
             inventoryWindow.Show();
             Window partyWindow = new PartyWindow(newParty);
             partyWindow.Show();
-
-
-
-            // Test
-
-            List<Enemy> enemyList = new();
-            enemyList.Add(DefaultData.Enemies["Skeleton"]);
-            enemyList.Add(DefaultData.Enemies["Bandit"]);
-            enemyList.Add(DefaultData.Enemies["Ogre"]);
-
-            EnemyGroup enemyGroup = new EnemyGroup(enemyList);
-
-            Window fighting = new FightWindow(newParty, enemyGroup);
-            fighting.Show();
 
             Close();
         }

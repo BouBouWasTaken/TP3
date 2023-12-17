@@ -2,7 +2,7 @@
 
 namespace tp3_prog
 {
-    public class Merchant : Characters
+    public class MerchantStore : Characters
     {
         public List<ItemInventory> Inventory = new();
         public double WeaponMult { get; set; }

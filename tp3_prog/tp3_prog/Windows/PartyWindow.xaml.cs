@@ -45,7 +45,7 @@ namespace tp3_prog
         // To test Shop window since we're not there yet
         private void ShopWindowTest_Click(object sender, RoutedEventArgs e)
         {
-            Merchant merchant = DefaultData.Merchants["Basic Armorsmith"];
+            MerchantStore merchant = DefaultData.Merchants["Basic Armorsmith"];
             Window shopWindow = new ShopWindow(merchant, this.party);
             shopWindow.Show();
         }

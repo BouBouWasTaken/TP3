@@ -8,9 +8,10 @@ namespace tp3_prog
         {
             Members = heroes;
             BaseItems();
+            Zone = DefaultData.Locations[1];
         }
 
-        public Zone Zone { get; set; }
+        public Zone? Zone { get; set; }
         public List<Hero> Members { get; set; }
         public List<ItemInventory> Inventory = new();
 

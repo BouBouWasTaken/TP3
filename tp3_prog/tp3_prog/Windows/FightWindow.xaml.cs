@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 
 namespace tp3_prog
@@ -11,14 +12,13 @@ namespace tp3_prog
         private int Rounds = 1;
         private List<Characters> Initiative = new List<Characters>();
         private bool initialisation_Initiative = true;
-        private bool initialisation_Panel = true;
         private new int TabIndex = 4;
         private Hero? CurrentHero = null;
         private readonly Random Random = new Random();
         private List<Characters> Sliced_Initiative = new List<Characters>();
         private string Log = "";
         private int Log_Target_Counter = 0;
-
+        private Enemy? CurrentEnemy = null;
 
         Skill SelectedSkill => (Skill)ListViewSkills.SelectedItem;
         Item SelectedItem => (Item)ListViewItems.SelectedItem;
@@ -29,6 +29,11 @@ namespace tp3_prog
 
             Party = party;
             Monsters = enemyGroup;
+
+            foreach (Enemy enemy in Monsters.Enemies_Party)
+            {
+                enemy.Current_HP = enemy.Max_Hp;
+            }
 
             InitializeComponent();
             ButtonAttack.Click += ButtonAttack_Click;
@@ -49,11 +54,6 @@ namespace tp3_prog
 
             for (int i = 0; i < Monsters.Enemies_Party.Count; i++)
             {
-                if (initialisation_Panel)
-                {
-                    Monsters.Enemies_Party[i].Current_HP = Monsters.Enemies_Party[i].Max_Hp;
-                    Monsters.Enemies_Party[i].Current_MP = Monsters.Enemies_Party[i].Max_MP;
-                }
                 if (Monsters.Enemies_Party[i].Current_HP > 1)
                 {
                     var userControlEnemy = new UserControlEnemy(Monsters.Enemies_Party[i]);
@@ -61,11 +61,44 @@ namespace tp3_prog
                 }
             }
 
-            if (PanelEnemies.Children.Count == 0)
+            if (!CheckIfMonsterAlive())
             {
+                MessageBox.Show("Tout les monstres sont morts.");
                 Close();
             }
-            initialisation_Panel = false;
+            if (!CheckIfPartyAlive())
+            {
+                MessageBox.Show("Tout les membres du party sont morts.");
+                Close();
+            }
+        }
+
+        private bool CheckIfPartyAlive()
+        {
+            if (Party == null) return false;
+
+            foreach (Hero hero in Party.Members)
+            {
+                if (hero.Current_Health >= 0)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private bool CheckIfMonsterAlive()
+        {
+            if (Monsters == null) return false;
+
+            foreach (Enemy enemy in Monsters.Enemies_Party)
+            {
+                if (enemy.Current_HP >= 0)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         private void ButtonItem_Click(object sender, RoutedEventArgs e)
@@ -76,8 +109,6 @@ namespace tp3_prog
                 List<int> targets = FindMyTarget(usable.Target);
 
                 if (targets.Count == 0) return;
-
-                // TODO :: REMOVE ITEM FROM INVENTORY
 
                 DealingDamage_Item(targets);
                 Fighting();
@@ -163,6 +194,7 @@ namespace tp3_prog
         {
             // Is there a hero
             if (SelectedItem == null) return;
+            if (CurrentHero == null) return;
 
             // Foreach int in my list
             foreach (int target in targets)
@@ -179,6 +211,10 @@ namespace tp3_prog
                             damage -= enemy.Def;
                             enemy.Current_HP -= damage;
                             TakeAwayItem();
+                            if (enemy.Current_HP < 0)
+                            {
+                                CurrentHero.Experience += enemy.Exp;
+                            }
                         }
                     }
                     LogPrintItem(target, damage);
@@ -432,6 +468,11 @@ namespace tp3_prog
                         damage -= enemy.Def;
                         enemy.Current_HP -= damage;
                         CurrentHero.Current_MagicPoints -= SelectedSkill.MagicPoints;
+
+                        if (enemy.Current_HP < 0)
+                        {
+                            CurrentHero.Experience += enemy.Exp;
+                        }
                     }
                 }
                 LogPrintSkill(target, damage);
@@ -525,6 +566,11 @@ namespace tp3_prog
             {
                 damage = CurrentHero.Attack - enemy.Def;
                 enemy.Current_HP -= damage;
+
+                if (enemy.Current_HP < 0)
+                {
+                    CurrentHero.Experience += enemy.Exp;
+                }
             }
 
             Log += $"{CurrentHero} attacked {enemy} for {damage}";
@@ -534,8 +580,6 @@ namespace tp3_prog
 
         private void Fighting()
         {
-            // TODO :: GIVE EXP WHEN KILL THINGS
-
             RefreshPanelEnemies();
 
             // Updates the initiative for next turn
@@ -632,60 +676,55 @@ namespace tp3_prog
 
         private void UpdateInitiativeAndLogs()
         {
-            // TODO :: CHANGE IT SO IT'S ENEMY - PARTY - ENEMY - PARTY
-            // TODO :: CHECK IF THERE'S SOMEONE DEAD, REMOVE IF SO 
-
             // Clear the ListView
             ListViewTurnOrder.Items.Clear();
 
-            // Initialises it for the first time
             if (initialisation_Initiative)
             {
-                for (int i = 0; i < 4; i++)
-                {
-                    Sliced_Initiative.Add(Initiative[i]);
-                }
-
+                Sliced_Initiative = new List<Characters>(Initiative.Take(4));
                 initialisation_Initiative = false;
-
-
-                HeroOrEnemy(Sliced_Initiative[0]);
-
-
-                ShowInitiative(Sliced_Initiative);
-                return;
             }
             else
             {
+                // Remove the first dead character (if any)
+                RemoveDeadPeople();
 
-                // If the tab is over the total amount of characters,
-                // reset it
+                // Remove the first element from Sliced_Initiative
+                Sliced_Initiative.RemoveAt(0);
+
+
                 CheckIndex();
+                // Add the next character to Sliced_Initiative
+                Sliced_Initiative.Add(Initiative[TabIndex]);
 
+                // Check if there are more than 4 characters in Sliced_Initiative
+                while (Sliced_Initiative.Count > 4)
+                {
+                    Sliced_Initiative.RemoveAt(Sliced_Initiative.Count - 1);
+                }
+            }
+
+            // Show the initiative in the ListView
+            ShowInitiative(Sliced_Initiative);
+
+            // Update other elements
+            TabIndex++;
+            RemoveDeadPeople();
+            HeroOrEnemy(Sliced_Initiative[0]);
+            if (!(Log == ""))
+            {
                 if (ListViewLog.Items.Count > 2)
                 {
                     ListViewLog.Items.RemoveAt(0);
+                    ListViewLog.Items.Add(Log);
                 }
-
-                ListViewLog.Items.Add(Log);
-
-                Sliced_Initiative.Add(Initiative[TabIndex]);
-
-                // TODO :: CHECK SO THEY DON'T PLAY RIGHT AFTER THE OTHER
-
-                Sliced_Initiative.Remove(Sliced_Initiative[0]);
-
-                RemoveDeadPeople();
-
-                HeroOrEnemy(Sliced_Initiative[0]);
-
-                // Show it
-                ShowInitiative(Sliced_Initiative);
-                TabIndex++;
-
-
+                else
+                {
+                    ListViewLog.Items.Add(Log);
+                }
             }
         }
+
 
         private void CheckIndex()
         {
@@ -755,7 +794,23 @@ namespace tp3_prog
 
         private void MonsterAttack(Enemy monster)
         {
+            if (monster == null) return;
+            if (Party == null) return;
 
+            List<int> targets = FindMyTarget(MagicTarget.RandomAlly);
+
+            CurrentEnemy = monster;
+            Hero hero = (Hero)Initiative[targets[0]];
+            int damage = monster.Atk - hero.Defense;
+
+
+            if (hero.Defense < monster.Atk)
+            {
+                hero.Current_Health -= damage;
+            }
+
+            Log = $"Round {Rounds} : {monster} attacked {hero} for {damage}";
+            Fighting();
         }
 
         private void ShowInitiative(List<Characters> list)
@@ -777,22 +832,34 @@ namespace tp3_prog
             List<Characters> list = new List<Characters>();
 
             // Put every hero in the list
-            foreach (Hero hero in Party.Members)
-            {
-                list.Add(hero);
-            }
-
-            foreach (Enemy enemy in Monsters.Enemies_Party)
-            {
-                list.Add(enemy);
-            }
-
-            // Sort it as a "Random" initiative
-            // TODO :: Sorting
-
+            list = ReturnInitiative(Monsters.Enemies_Party, Party.Members);
 
             // Set my public list for it
             Initiative = list;
         }
+
+        private List<Characters> ReturnInitiative(List<Enemy> list1, List<Hero> list2)
+        {
+
+            List<Characters> mergedList = new List<Characters>();
+
+            int maxLength = Math.Max(list1.Count, list2.Count);
+
+            for (int i = 0; i < maxLength; i++)
+            {
+                if (i < list1.Count)
+                {
+                    mergedList.Add(list1[i]);
+                }
+
+                if (i < list2.Count)
+                {
+                    mergedList.Add(list2[i]);
+                }
+            }
+
+            return mergedList;
+        }
     }
 }
+

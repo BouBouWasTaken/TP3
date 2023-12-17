@@ -43,9 +43,6 @@ namespace tp3_prog
                 }
             }
 
-            Party.Members[0].Equipment.Add(DefaultData.Equipments["Bronze sword"]);
-            Party.Members[0].UpdateMyStats(DefaultData.Equipments["Bronze sword"]);
-
             // Starting index
             ComboBoxType.SelectedIndex = 0;
             ListViewPlayer.SelectedIndex = 0;
@@ -160,6 +157,7 @@ namespace tp3_prog
             // For every item in his inventory
             foreach (ItemInventory item in inventory)
             {
+                if (item.Item.Name == null) continue;
                 // If the item's name contains what's in the SearchBar
                 if (item.Item.Name.Contains(condition))
                 {
