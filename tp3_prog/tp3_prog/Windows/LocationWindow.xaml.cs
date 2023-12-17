@@ -231,7 +231,7 @@ namespace tp3_prog
 
         private void AdvancedCraftOpenShop(object sender, RoutedEventArgs e)
         {
-            Window window = new ShopWindow(DefaultData.Merchants.Values.ElementAt(4), Party);
+            Window window = new ShopWindow(DefaultData.Crafters.Values.ElementAt(1), Party);
             window.Show();
         }
 
@@ -296,7 +296,7 @@ namespace tp3_prog
 
         private void CrafterOpenShop(object sender, RoutedEventArgs e)
         {
-            Window window = new ShopWindow(DefaultData.Merchants.Values.ElementAt(2), Party);
+            Window window = new ShopWindow(DefaultData.Crafters.Values.ElementAt(0), Party);
             window.Show();
         }
 

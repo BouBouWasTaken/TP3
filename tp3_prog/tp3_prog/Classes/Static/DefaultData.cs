@@ -199,7 +199,10 @@ namespace tp3_prog
                     OtherMult = .1,
                 }
             },
+
         };
+
+
         public static Dictionary<string, Recipie> Recipies = new()
         {
             {
@@ -364,6 +367,26 @@ namespace tp3_prog
                         new ItemInventory(item: Recipies["Excalibur"], amount: -1),
                         new ItemInventory(item: Recipies["Enchanted robes"], amount: -1)
 
+                    }
+                }
+            },
+            {
+                2,
+                new Crafter()
+                {
+                    Name = "Advanced Crafter",
+                    Inventory =
+                    {
+                        new ItemInventory(item: Recipies["Health potion"], amount: -1),
+                        new ItemInventory(item: Recipies["Health potion3"], amount: -1),
+                        new ItemInventory(item: Recipies["Mana potion1"], amount: -1),
+                        new ItemInventory(item: Recipies["Mana potion3"], amount: -1),
+                        new ItemInventory(item: Recipies["Leather"], amount: -1),
+                        new ItemInventory(item: Recipies["Iron ingot"], amount: -1),
+                        new ItemInventory(item: Recipies["Steel ingot"], amount: -1),
+                        new ItemInventory(item: Recipies["Magical cloth"], amount: -1),
+                        new ItemInventory(item: Recipies["Enchanted robes"], amount: -1),
+                        new ItemInventory(item: Recipies["Excalibur"], amount: -1),
                     }
                 }
             }
