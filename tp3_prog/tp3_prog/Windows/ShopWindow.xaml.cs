@@ -15,7 +15,7 @@ namespace tp3_prog
         private string Searchbox { get => TextBoxSearch.Text; }
         string BuyOrSell = "";
 
-        private readonly Npc currentNpc = new();
+        private Npc currentNpc = new();
         private readonly Party currentParty;
         private bool craftableOnly = false;
         public ShopWindow(Npc npc, Party party)
@@ -26,6 +26,7 @@ namespace tp3_prog
             currentNpc = npc;
             TextBlockTitle.Text = currentNpc.Name;
             ComboBoxType.Items.Clear();
+
 
             foreach (var item in Enum.GetValues(typeof(ItemType)))
             {
@@ -86,8 +87,14 @@ namespace tp3_prog
 
                 merchantInventoryCount++;
             }
-
-            TextBlockMerchant.Text = $"Merchant Inventory ({itemsShown}/{merchantInventoryCount})";
+            if (currentNpc is Crafter)
+            {
+                TextBlockMerchant.Text = $"Crafter Inventory ({itemsShown}/{merchantInventoryCount})";
+            }
+            else
+            {
+                TextBlockMerchant.Text = $"Merchant Inventory ({itemsShown}/{merchantInventoryCount})";
+            }
         }
 
         private void PlayerInventory()
