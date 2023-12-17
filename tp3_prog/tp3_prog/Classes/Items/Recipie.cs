@@ -2,13 +2,22 @@
 
 namespace tp3_prog
 {
-    public class Recipie
+    public class Recipie : Item
     {
-        public Item ItemCrafted { get; set; } // The item that it crafts
+        public Item ItemCrafted { get; set; } = new(); // The item that it crafts
         public int AmountCrafted { get; set; } // how many of that item are crafted
         public List<ItemInventory> Ingredients { get; set; } = new(); // Ingredients & amount needed for it
 
 
+        public override string ToString()
+        {
+            string returnString = "";
+            foreach (var item in Ingredients)
+            {
+                returnString += item.Item.Name + "(" + item.Amount + ")\n";
+            }
+            return returnString;
+        }
 
 
         public List<ItemInventory> MakeItem(List<ItemInventory> inventory, int toMake = 1)
@@ -38,19 +47,26 @@ namespace tp3_prog
         }
 
 
-        private bool HasIngredients(List<ItemInventory> inventory)
+        public bool HasIngredients(List<ItemInventory> playerInventory)
         {
-            // Check if the inventory contains all the necessary ingredients
             foreach (var ingredient in Ingredients)
             {
-                if (!inventory.Contains(ingredient))
+                bool ingredientFound = false;
+
+                foreach (var playerItem in playerInventory)
                 {
-                    // The inventory is missing at least one ingredient
+                    if (playerItem.Item.Equals(ingredient.Item) && playerItem.Amount >= ingredient.Amount)
+                    {
+                        ingredientFound = true;
+                        break;
+                    }
+                }
+                if (!ingredientFound)
+                {
                     return false;
                 }
             }
 
-            // All ingredients are present in the inventory
             return true;
         }
     }

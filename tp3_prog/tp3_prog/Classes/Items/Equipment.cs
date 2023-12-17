@@ -15,31 +15,10 @@ namespace tp3_prog
 
         public void Equip(Hero hero)
         {
-            if (CurrentOwner == null) return;
-            if (hero.Equipment == null) return;
+            CurrentOwner = hero;
 
-            bool found = false;
-            // Check if he already has an equiped
-            foreach (Equipment equipment in hero.Equipment)
-            {
-                if (equipment.Type == Type)
-                {
-                    hero.Equipment.Remove(equipment);
-                    hero.EraseItemStats(equipment);
-
-                    hero.Equipment.Add(this);
-                    hero.UpdateMyStats(this);
-                    CurrentOwner = hero;
-
-                    found = true;
-                }
-            }
-
-            if (!found)
-            {
-                hero.Equipment.Add(this);
-                CurrentOwner.UpdateMyStats(this);
-            }
+            hero.Equipment.Add(this);
+            CurrentOwner.UpdateMyStats(this);
 
         }
 
@@ -69,7 +48,7 @@ namespace tp3_prog
         public override string ToString()
         {
             if (Name == null) return string.Empty;
-            return Name;
+            return Name + Description;
         }
 
     }

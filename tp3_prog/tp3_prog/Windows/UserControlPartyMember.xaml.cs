@@ -9,7 +9,8 @@ namespace tp3_prog
     {
         // Fait Par Samuel Therrien-Côté
 
-        Hero CurrentHero { get; set; }
+        public Hero CurrentHero { get; set; }
+        ItemInventory SelectedItem => (ItemInventory)ListViewEquipments.SelectedItem;
         public UserControlPartyMember(Hero hero)
         {
             InitializeComponent();

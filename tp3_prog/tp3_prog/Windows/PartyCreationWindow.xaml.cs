@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 
@@ -8,9 +8,9 @@ namespace tp3_prog
 
     public partial class PartyCreationWindow : Window
     {
-        List<UserControlPartyCreation> windowsList = new();
-        List<Hero> heroList = new();
-        List<Classe> ClassesPossibles = new();
+        private readonly List<UserControlPartyCreation> windowsList = new();
+        private readonly List<Hero> heroList = new();
+        private readonly List<Classe> ClassesPossibles = new();
         public PartyCreationWindow()
         {
             InitializeComponent();

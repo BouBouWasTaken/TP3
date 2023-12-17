@@ -1,5 +1,6 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace tp3_prog
 {
@@ -7,8 +8,8 @@ namespace tp3_prog
 
     public partial class PartyWindow : Window
     {
-        private Party party;
-        List<UserControlPartyMember> windowsList = new();
+        private readonly Party party;
+        private readonly List<UserControlPartyMember> windowsList = new();
         public PartyWindow(Party party)
         {
             InitializeComponent();
@@ -31,7 +32,26 @@ namespace tp3_prog
 
         private void ButtonUnequip_Click(object sender, RoutedEventArgs e)
         {
+            foreach (var window in windowsList)
+            {
+                ListView listView = window.ListViewEquipments;
 
+                if (listView.SelectedItem != null)
+                {
+                    if (listView.SelectedItem is Equipment equipment)
+                    {
+                        //window.CurrentHero.Equipment.Remove(equipment);
+                        equipment.Unequip(window.CurrentHero);
+                        party.Inventory.Add(new ItemInventory(equipment, 1));
+                    }
+                    if (listView.SelectedItem is ItemInventory itemInv)
+                    {
+                        window.CurrentHero.RemoveUsable((Usable)itemInv.Item, 1);
+                        party.AddItem((Usable)itemInv.Item, 1);
+                    }
+                }
+            }
+            Refresh();
         }
         public void Refresh()
         {
@@ -45,8 +65,13 @@ namespace tp3_prog
         // To test Shop window since we're not there yet
         private void ShopWindowTest_Click(object sender, RoutedEventArgs e)
         {
-            MerchantStore merchant = DefaultData.Merchants["Basic Armorsmith"];
+            // ShopWindow Test with Merchant
+            Merchant merchant = DefaultData.Merchants["Basic Armorsmith"];
             Window shopWindow = new ShopWindow(merchant, this.party);
+
+            // ShopWindow Test with Crafter
+            //Crafter newCrafter = DefaultData.Crafters[1];
+            //Window shopWindow = new ShopWindow(newCrafter, this.party);
             shopWindow.Show();
         }
     }

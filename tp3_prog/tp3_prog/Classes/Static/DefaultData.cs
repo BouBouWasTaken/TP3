@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 
 namespace tp3_prog
 {
@@ -135,7 +135,8 @@ namespace tp3_prog
             {"Dragon",      new Enemy(){Name = "Dragon"  , Level = 4, Max_Hp = 25, Atk = 12, Def = 6, Gold = 20, Exp = 20, Drop_Chance = 1.25, Drop_Items = { Components["Steel ore"], Components["Amethyst"] } } }
 
         };
-        public static Dictionary<string, MerchantStore> Merchants = new()
+
+        public static Dictionary<string, Merchant> Merchants = new()
         {
             {
                 "Basic Weaponsmith",
@@ -202,9 +203,10 @@ namespace tp3_prog
         public static Dictionary<string, Recipie> Recipies = new()
         {
             {
-                "Health potion1",
+                "Health potion",
                 new Recipie()
                 {
+                    Name = "Health potion x 1",
                     ItemCrafted = Usables["Health potion"],
                     AmountCrafted = 1,
                     Ingredients =
@@ -218,6 +220,7 @@ namespace tp3_prog
                 "Health potion3",
                 new Recipie()
                 {
+                    Name = "Health potion x 3",
                     ItemCrafted = Usables["Health potion"],
                     AmountCrafted = 3,
                     Ingredients =
@@ -232,6 +235,7 @@ namespace tp3_prog
                 "Mana potion1",
                 new Recipie()
                 {
+                    Name = "Mana potion x 1",
                     ItemCrafted = Usables["Mana potion"],
                     AmountCrafted = 1,
                     Ingredients =
@@ -245,6 +249,7 @@ namespace tp3_prog
                 "Mana potion3",
                 new Recipie()
                 {
+                    Name = "Mana potion x 3",
                     ItemCrafted = Usables["Mana potion"],
                     AmountCrafted = 3,
                     Ingredients =
@@ -259,6 +264,7 @@ namespace tp3_prog
                 "Leather",
                 new Recipie()
                 {
+                    Name = "Leather",
                     ItemCrafted = Components["Leather"],
                     AmountCrafted = 1,
                     Ingredients =
@@ -273,6 +279,7 @@ namespace tp3_prog
                 "Iron ingot",
                 new Recipie()
                 {
+                    Name = "Iron ingot",
                     ItemCrafted = Components["Iron ingot"],
                     AmountCrafted = 1,
                     Ingredients =
@@ -286,6 +293,7 @@ namespace tp3_prog
                 "Steel ingot",
                 new Recipie()
                 {
+                    Name = "Steel ingot",
                     ItemCrafted = Components["Steel ingot"],
                     AmountCrafted = 1,
                     Ingredients =
@@ -300,6 +308,7 @@ namespace tp3_prog
                 "Magical cloth",
                 new Recipie()
                 {
+                    Name = "Magical cloth",
                     ItemCrafted = Components["Magical cloth"],
                     AmountCrafted = 1,
                     Ingredients =
@@ -314,6 +323,7 @@ namespace tp3_prog
                 "Enchanted robes",
                 new Recipie()
                 {
+                    Name = "Enchanted robes",
                     ItemCrafted = Equipments["Enchanted robes"],
                     AmountCrafted = 1,
                     Ingredients =
@@ -329,6 +339,7 @@ namespace tp3_prog
                 "Excalibur",
                 new Recipie()
                 {
+                    Name = "Excalibur",
                     ItemCrafted = Equipments["Excalibur"],
                     AmountCrafted = 1,
                     Ingredients =
@@ -341,6 +352,21 @@ namespace tp3_prog
                 }
             }
 
+        }; public static Dictionary<int, Crafter> Crafters = new()
+        {
+            {
+                1,
+                new Crafter()
+                {
+                    Name = "Noob Town Crafter",
+                    Inventory =
+                    {
+                        new ItemInventory(item: Recipies["Excalibur"], amount: -1),
+                        new ItemInventory(item: Recipies["Enchanted robes"], amount: -1)
+
+                    }
+                }
+            }
         };
 
     }
