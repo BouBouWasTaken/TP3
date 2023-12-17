@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
@@ -14,6 +14,7 @@ namespace tp3_prog
         bool beatenGoblins = false;
         public LocationWindow(Zone zone, Party party)
         {
+            currentParty = party;
             InitializeComponent();
             SelectedZone = zone;
             SelectedZone.Discovered = true;
